@@ -6,12 +6,14 @@
 /*   By: mawelsch <mawelsch@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/07 13:43:22 by mawelsch          #+#    #+#             */
-/*   Updated: 2025/11/08 18:06:19 by mawelsch         ###   ########.fr       */
+/*   Updated: 2025/11/08 20:51:45 by mawelsch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+//Currently  the main wrapper, I plan to delegate most task to smaller
+//wrappers but this is totally fine for testing.
 int	main(int argc, char **argv)
 {
 	int	mode[4];

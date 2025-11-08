@@ -1,17 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parser_1.c                                         :+:      :+:    :+:   */
+/*   parser.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mawelsch <mawelsch@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/08 16:39:52 by mawelsch          #+#    #+#             */
-/*   Updated: 2025/11/08 17:05:41 by mawelsch         ###   ########.fr       */
+/*   Updated: 2025/11/08 20:58:41 by mawelsch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+//This function checks if the current argument is a valid option
 int	check_option(char *value, int in_options)
 {
 	if (in_options)
@@ -41,11 +42,14 @@ int	check_option(char *value, int in_options)
 		return (1);
 }
 
+//this oneliner is to save some lines.
+//It just sets my "invalid arguments" flag to 1 (true)
 void	invalid_arg(int *mode)
 {
 	mode[2] = 1;
 }
 
+//This function sets the mode flags according to the previosly set selector.
 int	parse_selector(int selector, int *mode)
 {
 	if (selector == 0)
@@ -73,6 +77,8 @@ int	parse_selector(int selector, int *mode)
 	}
 }
 
+//This is my general main parser function.
+//It's calling my validator/setter functions.
 void	get_modes(char **argv, int *mode)
 {
 	int	index;
@@ -102,6 +108,7 @@ void	get_modes(char **argv, int *mode)
 		mode[1] = 4;
 }
 
+//This function puts all objects into the array stack_a.
 void	fill_stack_a(char **argv, int *stack_size, int argc, int *stack_a)
 {
 	int	index;

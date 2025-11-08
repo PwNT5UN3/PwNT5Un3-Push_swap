@@ -6,9 +6,11 @@
 /*   By: mawelsch <mawelsch@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/08 18:24:01 by mawelsch          #+#    #+#             */
-/*   Updated: 2025/11/08 20:50:05 by mawelsch         ###   ########.fr       */
+/*   Updated: 2025/11/08 20:59:17 by mawelsch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+//This file defines the rr methods.
 
 void	rra(int *stack_a, int *stack_size, int *operations)
 {
