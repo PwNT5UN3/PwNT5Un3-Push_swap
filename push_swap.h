@@ -6,7 +6,7 @@
 /*   By: mawelsch <mawelsch@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/08 16:13:02 by mawelsch          #+#    #+#             */
-/*   Updated: 2025/11/08 21:03:23 by mawelsch         ###   ########.fr       */
+/*   Updated: 2025/11/08 21:15:45 by mawelsch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,8 @@ void	get_modes(char **argv, int *mode);
 int		parse_selector(int selector, int *mode);
 void	invalid_arg(int *mode);
 int		check_option(char *value, int in_options);
-void	fill_stack_a(char **argv, int *stack_size, int argc, int *stack_a);
+int		fill_stack_a(char **argv, int *stack_size, int argc, int *stack_a);
+int		check_for_duplicates(int *stack_a, int index_2);
 
 //The methods
 void	sa(int *stack_a, int *stack_size, int *operations);

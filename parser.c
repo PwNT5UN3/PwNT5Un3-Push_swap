@@ -6,7 +6,7 @@
 /*   By: mawelsch <mawelsch@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/08 16:39:52 by mawelsch          #+#    #+#             */
-/*   Updated: 2025/11/08 20:58:41 by mawelsch         ###   ########.fr       */
+/*   Updated: 2025/11/08 21:09:25 by mawelsch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,21 +106,4 @@ void	get_modes(char **argv, int *mode)
 	}
 	if (mode[1] == 0)
 		mode[1] = 4;
-}
-
-//This function puts all objects into the array stack_a.
-void	fill_stack_a(char **argv, int *stack_size, int argc, int *stack_a)
-{
-	int	index;
-	int	index_2;
-
-	index = argc - stack_size[0];
-	index_2 = 0;
-	while (index < argc)
-	{
-		stack_a[index_2] = ft_atoi(argv[index]);
-		ft_printf("%d:", stack_a[index_2]);
-		index++;
-		index_2++;
-	}
 }

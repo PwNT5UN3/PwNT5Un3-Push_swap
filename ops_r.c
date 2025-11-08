@@ -6,7 +6,7 @@
 /*   By: mawelsch <mawelsch@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/08 18:23:58 by mawelsch          #+#    #+#             */
-/*   Updated: 2025/11/08 20:59:26 by mawelsch         ###   ########.fr       */
+/*   Updated: 2025/11/08 21:16:58 by mawelsch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,8 @@ void	rb(int *stack_b, int *stack_size, int *operations)
 void	rr(int *stack_a, int *stack_b, int *stack_size, int *operations)
 {
 	operations[7]++;
-	ra(*stack_a, *stack_size, *operations);
-	rb(*stack_a, *stack_size, *operations);
+	ra(stack_a, stack_size, operations);
+	rb(stack_b, stack_size, operations);
 	operations[5]--;
 	operations[6]--;
 }
