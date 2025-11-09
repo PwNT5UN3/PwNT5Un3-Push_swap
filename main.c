@@ -6,7 +6,7 @@
 /*   By: mawelsch <mawelsch@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/07 13:43:22 by mawelsch          #+#    #+#             */
-/*   Updated: 2025/11/09 03:05:46 by mawelsch         ###   ########.fr       */
+/*   Updated: 2025/11/09 14:19:30 by mawelsch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,17 +32,14 @@ int	fill_stack_a(char **argv, int argc, t_stk *a, t_flag *mode)
 	flag_count = get_modes(argv, mode);
 	a->len = argc - flag_count - 1;
 	index = flag_count + 1;
-	ft_printf("#%s#\n", argv[index]);
-	ft_printf("%%%d%%%%%d%%\n", a->len, flag_count);
 	a->vals = ft_calloc(a->len, sizeof(int));
-	if (!a->vals || a->len == 0 || mode->invalid_arg == 1)
+	if (a->vals == NULL || a->len == 0 || mode->invalid_arg == 1)
 		return (0);
 	while (index < argc)
 	{
-		a->vals[index - 1] = ft_atoi(argv[index]);
-		if (check_for_duplicates(a, index) == 0)
+		a->vals[index - flag_count - 1] = ft_atoi(argv[index]);
+		if (check_for_duplicates(a, index - flag_count - 1) == 0)
 			return (0);
-		ft_printf("%d:", a->vals[index]);
 		index++;
 	}
 	return (1);
@@ -65,5 +62,5 @@ int	main(int argc, char **argv)
 	b.vals = ft_calloc(a.len, sizeof(int));
 	if (fill_stack_a(argv, argc, &a, &mode) == 0 || !b.vals)
 		return (free(a.vals), free(b.vals), 0);
-	ft_printf("2\n");
+	ft_printf("\n2\n");
 }

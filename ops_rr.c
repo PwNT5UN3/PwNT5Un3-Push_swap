@@ -6,7 +6,7 @@
 /*   By: mawelsch <mawelsch@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/08 18:24:01 by mawelsch          #+#    #+#             */
-/*   Updated: 2025/11/09 01:50:22 by mawelsch         ###   ########.fr       */
+/*   Updated: 2025/11/09 13:32:04 by mawelsch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,13 +22,13 @@ void	rra(t_stk *stack_a, t_stat *operations)
 	if (stack_a->len > 1)
 	{
 		index = stack_a->len - 1;
-		tmp = stack_a->stk[index];
+		tmp = stack_a->vals[index];
 		while (index > 0)
 		{
-			stack_a->stk[index] = stack_a->stk[index - 1];
+			stack_a->vals[index] = stack_a->vals[index - 1];
 			index--;
 		}
-		stack_a->stk[index] = tmp;
+		stack_a->vals[index] = tmp;
 	}
 }
 
@@ -41,13 +41,13 @@ void	rrb(t_stk *stack_b, t_stat *operations)
 	if (stack_b->len > 1)
 	{
 		index = stack_b->len - 1;
-		tmp = stack_b->stk[index];
+		tmp = stack_b->vals[index];
 		while (index > 0)
 		{
-			stack_b->stk[index] = stack_b->stk[index - 1];
+			stack_b->vals[index] = stack_b->vals[index - 1];
 			index--;
 		}
-		stack_b->stk[index] = tmp;
+		stack_b->vals[index] = tmp;
 	}
 }
 

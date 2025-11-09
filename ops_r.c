@@ -6,7 +6,7 @@
 /*   By: mawelsch <mawelsch@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/08 18:23:58 by mawelsch          #+#    #+#             */
-/*   Updated: 2025/11/09 01:52:44 by mawelsch         ###   ########.fr       */
+/*   Updated: 2025/11/09 13:32:31 by mawelsch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,10 +38,10 @@ void	rb(t_stk *stack_b, t_stat *operations)
 	if (stack_size[1] > 1)
 	{
 		index = -1;
-		tmp = stack_b[0];
+		tmp = stack_b->vals[0];
 		while (++index < stack_size[1] - 1)
 			stack_b[index] = stack_b[index + 1];
-		stack_b[index] = tmp;
+		stack_b->vals[index] = tmp;
 	}
 }
 
