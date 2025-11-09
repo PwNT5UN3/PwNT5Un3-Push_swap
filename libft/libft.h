@@ -6,7 +6,7 @@
 /*   By: mawelsch <mawelsch@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/10 13:26:13 by mawelsch          #+#    #+#             */
-/*   Updated: 2025/10/13 23:20:47 by mawelsch         ###   ########.fr       */
+/*   Updated: 2025/11/09 01:28:00 by mawelsch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 # include <stddef.h>
 # include <stdarg.h>
 # include <stdlib.h>
+# include <unistd.h>
 
 typedef struct s_list
 {

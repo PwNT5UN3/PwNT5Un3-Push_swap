@@ -6,10 +6,11 @@
 /*   By: mawelsch <mawelsch@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/08 18:23:51 by mawelsch          #+#    #+#             */
-/*   Updated: 2025/11/08 20:59:35 by mawelsch         ###   ########.fr       */
+/*   Updated: 2025/11/09 01:50:51 by mawelsch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "push_swap.h"
 //This file defines the s and p methods.
 
 void	sa(int *stack_a, int *stack_size, int *operations)

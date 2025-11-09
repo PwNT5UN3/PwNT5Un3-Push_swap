@@ -6,7 +6,7 @@
 #    By: mawelsch <mawelsch@student.42heilbronn.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/11/07 15:12:42 by mawelsch          #+#    #+#              #
-#    Updated: 2025/11/08 18:30:07 by mawelsch         ###   ########.fr        #
+#    Updated: 2025/11/09 02:41:09 by mawelsch         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ CFLAGS = -Wall -Wextra -Werror
 
 NAME = push_swap
 
-CFILES = main.c parser.c ops_ps.c ops_r.c ops_rr.c
+CFILES = main.c parser.c
 
 OFILES = $(CFILES:.c=.o)
 

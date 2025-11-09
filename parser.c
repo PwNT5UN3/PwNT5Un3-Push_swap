@@ -6,7 +6,7 @@
 /*   By: mawelsch <mawelsch@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/08 16:39:52 by mawelsch          #+#    #+#             */
-/*   Updated: 2025/11/08 21:09:25 by mawelsch         ###   ########.fr       */
+/*   Updated: 2025/11/09 02:17:33 by mawelsch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,13 @@ int	check_option(char *value, int in_options)
 	{
 		if (ft_strncmp(value, "--bench", 8) == 0)
 			return (1);
-		else if (ft_strncmp(value, "--simple", 9) == 0)
-			return (2);
-		else if (ft_strncmp(value, "--medium", 9) == 0)
-			return (3);
-		else if (ft_strncmp(value, "--complex", 10) == 0)
-			return (4);
 		else if (ft_strncmp(value, "--adaptive", 11) == 0)
+			return (2);
+		else if (ft_strncmp(value, "--simple", 9) == 0)
+			return (3);
+		else if (ft_strncmp(value, "--medium", 9) == 0)
+			return (4);
+		else if (ft_strncmp(value, "--complex", 10) == 0)
 			return (5);
 		else
 			return (0);
@@ -44,21 +44,21 @@ int	check_option(char *value, int in_options)
 
 //this oneliner is to save some lines.
 //It just sets my "invalid arguments" flag to 1 (true)
-void	invalid_arg(int *mode)
+void	invalid_arg(t_flag *mode)
 {
-	mode[2] = 1;
+	mode->invalid_arg = 1;
 }
 
 //This function sets the mode flags according to the previosly set selector.
-int	parse_selector(int selector, int *mode)
+int	parse_selector(int selector, t_flag *mode)
 {
 	if (selector == 0)
 		return (invalid_arg(mode), 0);
 	else if (selector == 1)
 	{
-		if (mode[0] == 0)
+		if (mode->bench_set == 0)
 		{
-			mode[0] = 1;
+			mode->bench_set = 1;
 			return (1);
 		}
 		else
@@ -66,10 +66,10 @@ int	parse_selector(int selector, int *mode)
 	}
 	else
 	{
-		if (mode[1] == 0)
+		if (mode->strategy == 0)
 		{
-			mode[1] = selector - 1;
-			mode[3] = 1;
+			mode->strategy = selector - 1;
+			mode->strat_set = 1;
 			return (1);
 		}
 		else
@@ -79,7 +79,7 @@ int	parse_selector(int selector, int *mode)
 
 //This is my general main parser function.
 //It's calling my validator/setter functions.
-void	get_modes(char **argv, int *mode)
+int	get_modes(char **argv, t_flag *mode)
 {
 	int	index;
 	int	in_options;
@@ -93,17 +93,16 @@ void	get_modes(char **argv, int *mode)
 			in_options = 0;
 		else
 			if (in_options == 0)
-				mode[2] = 0;
+				mode->invalid_arg = 1;
 		selector = check_option(argv[index], in_options);
 		if (in_options)
 		{
 			if (parse_selector(selector, mode) == 0)
-				return ;
+				return (0);
 		}
 		else if (selector == 0)
-			return (invalid_arg(mode));
+			return (invalid_arg(mode), 0);
 		index++;
 	}
-	if (mode[1] == 0)
-		mode[1] = 4;
+	return (mode->strat_set + mode->bench_set);
 }

@@ -6,13 +6,14 @@
 /*   By: mawelsch <mawelsch@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/08 18:23:58 by mawelsch          #+#    #+#             */
-/*   Updated: 2025/11/08 21:16:58 by mawelsch         ###   ########.fr       */
+/*   Updated: 2025/11/09 01:52:44 by mawelsch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "push_swap.h"
 //This file defines the r methods.
 
-void	ra(int *stack_a, int *stack_size, int *operations)
+void	ra(t_stk *stack_a, t_stat *operations)
 {
 	int	tmp;
 	int	index;
@@ -28,7 +29,7 @@ void	ra(int *stack_a, int *stack_size, int *operations)
 	}
 }
 
-void	rb(int *stack_b, int *stack_size, int *operations)
+void	rb(t_stk *stack_b, t_stat *operations)
 {
 	int	tmp;
 	int	index;
@@ -44,11 +45,11 @@ void	rb(int *stack_b, int *stack_size, int *operations)
 	}
 }
 
-void	rr(int *stack_a, int *stack_b, int *stack_size, int *operations)
+void	rr(t_stk *stack_a, t_stk *stack_b, t_stat *operations)
 {
-	operations[7]++;
-	ra(stack_a, stack_size, operations);
-	rb(stack_b, stack_size, operations);
-	operations[5]--;
-	operations[6]--;
+	operations->rr++;
+	ra(stack_a, operations);
+	rb(stack_b, operations);
+	operations->ra--;
+	operations->rb--;
 }
