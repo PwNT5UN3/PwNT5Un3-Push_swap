@@ -6,11 +6,25 @@
 /*   By: mawelsch <mawelsch@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/08 16:39:52 by mawelsch          #+#    #+#             */
-/*   Updated: 2025/11/09 02:17:33 by mawelsch         ###   ########.fr       */
+/*   Updated: 2025/11/09 03:19:56 by mawelsch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+int	is_valid_num(char *value)
+{
+	if (*value == '-')
+		value++;
+	if (*value == '\0')
+		return (0);
+	while (*value >= '0' && *value <= '9')
+		value++;
+	if (*value != '\0')
+		return (0);
+	else
+		return (1);
+}
 
 //This function checks if the current argument is a valid option
 int	check_option(char *value, int in_options)
@@ -30,30 +44,21 @@ int	check_option(char *value, int in_options)
 		else
 			return (0);
 	}
-	if (*value == '-')
-		value++;
-	if (*value == '\0')
-		return (0);
-	while (*value >= '0' && *value <= '9')
-		value++;
-	if (*value != '\0')
-		return (0);
-	else
-		return (1);
 }
 
 //this oneliner is to save some lines.
 //It just sets my "invalid arguments" flag to 1 (true)
-void	invalid_arg(t_flag *mode)
+void	invalid_arg(t_flag *mode, int d)
 {
 	mode->invalid_arg = 1;
+	ft_printf("&&%d&&\n", d);
 }
 
 //This function sets the mode flags according to the previosly set selector.
 int	parse_selector(int selector, t_flag *mode)
 {
 	if (selector == 0)
-		return (invalid_arg(mode), 0);
+		return (invalid_arg(mode, 0), 0);
 	else if (selector == 1)
 	{
 		if (mode->bench_set == 0)
@@ -62,7 +67,7 @@ int	parse_selector(int selector, t_flag *mode)
 			return (1);
 		}
 		else
-			return (invalid_arg(mode), 0);
+			return (invalid_arg(mode, 1), 0);
 	}
 	else
 	{
@@ -73,7 +78,7 @@ int	parse_selector(int selector, t_flag *mode)
 			return (1);
 		}
 		else
-			return (invalid_arg(mode), 0);
+			return (invalid_arg(mode, selector), 0);
 	}
 }
 
@@ -93,7 +98,7 @@ int	get_modes(char **argv, t_flag *mode)
 			in_options = 0;
 		else
 			if (in_options == 0)
-				mode->invalid_arg = 1;
+				invalid_arg(mode, -2);
 		selector = check_option(argv[index], in_options);
 		if (in_options)
 		{
@@ -101,8 +106,9 @@ int	get_modes(char **argv, t_flag *mode)
 				return (0);
 		}
 		else if (selector == 0)
-			return (invalid_arg(mode), 0);
+			return (invalid_arg(mode, -1), 0);
 		index++;
 	}
+	ft_printf("$%d$$%d$\n", mode->strat_set, mode->bench_set);
 	return (mode->strat_set + mode->bench_set);
 }

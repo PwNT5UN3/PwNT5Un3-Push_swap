@@ -6,7 +6,7 @@
 /*   By: mawelsch <mawelsch@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/07 13:43:22 by mawelsch          #+#    #+#             */
-/*   Updated: 2025/11/09 02:47:30 by mawelsch         ###   ########.fr       */
+/*   Updated: 2025/11/09 03:05:46 by mawelsch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,17 +27,19 @@ int	check_for_duplicates(t_stk *a, int index_2)
 int	fill_stack_a(char **argv, int argc, t_stk *a, t_flag *mode)
 {
 	int	index;
+	int	flag_count;
 
-	a->len = argc - get_modes(argv, mode);
-	index = get_modes(argv, mode);
-	ft_printf("#%d#\n", index);
-	ft_printf("%%%d%%%%%d%%\n", mode->bench_set, mode->strat_set);
+	flag_count = get_modes(argv, mode);
+	a->len = argc - flag_count - 1;
+	index = flag_count + 1;
+	ft_printf("#%s#\n", argv[index]);
+	ft_printf("%%%d%%%%%d%%\n", a->len, flag_count);
 	a->vals = ft_calloc(a->len, sizeof(int));
 	if (!a->vals || a->len == 0 || mode->invalid_arg == 1)
 		return (0);
 	while (index < argc)
 	{
-		a->vals[index] = ft_atoi(argv[index]);
+		a->vals[index - 1] = ft_atoi(argv[index]);
 		if (check_for_duplicates(a, index) == 0)
 			return (0);
 		ft_printf("%d:", a->vals[index]);

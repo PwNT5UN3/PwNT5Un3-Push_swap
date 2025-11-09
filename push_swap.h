@@ -6,7 +6,7 @@
 /*   By: mawelsch <mawelsch@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/08 16:13:02 by mawelsch          #+#    #+#             */
-/*   Updated: 2025/11/09 02:39:25 by mawelsch         ###   ########.fr       */
+/*   Updated: 2025/11/09 03:09:53 by mawelsch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ typedef struct s_stat
 
 int		get_modes(char **argv, t_flag *mode);
 int		parse_selector(int selector, t_flag *mode);
-void	invalid_arg(t_flag *mode);
+void	invalid_arg(t_flag *mode, int d);
 int		check_option(char *value, int in_options);
 int		fill_stack_a(char **argv, int argc, t_stk *stack_a, t_flag *mode);
 int		check_for_duplicates(t_stk *stack_a, int index_2);
