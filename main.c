@@ -6,7 +6,7 @@
 /*   By: mawelsch <mawelsch@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/07 13:43:22 by mawelsch          #+#    #+#             */
-/*   Updated: 2025/11/09 14:19:30 by mawelsch         ###   ########.fr       */
+/*   Updated: 2025/11/10 18:26:36 by mawelsch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,14 +53,17 @@ int	main(int argc, char **argv)
 	t_stk	a;
 	t_stk	b;
 	t_stat	stats;
+	int		fill_success;
 
+	fill_success = 0;
 	mode = (t_flag){0};
 	stats = (t_stat){0};
 	ft_printf("1\n");
 	a = (t_stk){.name = 'a', .len = 0, .vals = 0};
 	b = (t_stk){.name = 'b', .len = 0, .vals = 0};
+	fill_success = fill_stack_a(argv, argc, &a, &mode);
 	b.vals = ft_calloc(a.len, sizeof(int));
-	if (fill_stack_a(argv, argc, &a, &mode) == 0 || !b.vals)
+	if (fill_success == 0 || !b.vals)
 		return (free(a.vals), free(b.vals), 0);
 	ft_printf("\n2\n");
 }

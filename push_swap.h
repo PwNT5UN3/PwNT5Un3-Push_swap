@@ -6,7 +6,7 @@
 /*   By: mawelsch <mawelsch@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/08 16:13:02 by mawelsch          #+#    #+#             */
-/*   Updated: 2025/11/09 14:10:33 by mawelsch         ###   ########.fr       */
+/*   Updated: 2025/11/10 18:06:01 by mawelsch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ int		check_option(char *value);
 int		fill_stack_a(char **argv, int argc, t_stk *stack_a, t_flag *mode);
 int		check_for_duplicates(t_stk *stack_a, int index_2);
 
-//The methods
+//The methods !!DEPRECATED!! Change when new ones written
 void	sa(t_stk *stack_a, t_stat *operations);
 void	sb(t_stk *stack_b, t_stat *operations);
 void	ss(t_stk *stack_a, t_stk *stack_b, t_stat *operations);
@@ -76,5 +76,11 @@ void	rr(t_stk *stack_a, t_stk *stack_b, t_stat *operations);
 void	rra(t_stk *stack_a, t_stat *operations);
 void	rrb(t_stk *stack_b, t_stat *operations);
 void	rrr(t_stk *stack_a, t_stk *stack_b, t_stat *operations);
+
+//The actual operations
+void	swap(t_stk *stk);
+void	push(t_stk *to, t_stk *from);
+void	rotate(t_stk *stk);
+void	rev_rotate(t_stk *stk);
 
 #endif //PUSH_SWAP_H
