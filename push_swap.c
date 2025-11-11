@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mawelsch <mawelsch@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/07 13:43:22 by mawelsch          #+#    #+#             */
-/*   Updated: 2025/11/10 23:02:57 by mawelsch         ###   ########.fr       */
+/*   Updated: 2025/11/11 01:40:46 by mawelsch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,6 +91,6 @@ int	main(int argc, char **argv)
 	stats.disorder = ft_get_disorder(a.vals, a.len);
 	if (fill_success == 0 || !b.vals)
 		return (free(a.vals), free(b.vals), 0);
-	bubblesort(&a, &stats, &mode);
+	bubblesort(&a, &b, &stats, &mode);
 	ft_printf("\n2\n");
 }

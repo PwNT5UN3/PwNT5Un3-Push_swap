@@ -6,32 +6,31 @@
 /*   By: mawelsch <mawelsch@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/08 17:55:24 by mawelsch          #+#    #+#             */
-/*   Updated: 2025/11/10 23:41:50 by mawelsch         ###   ########.fr       */
+/*   Updated: 2025/11/11 01:47:03 by mawelsch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	bubblesort(t_stk *stk, t_stat *stats, t_flag *flags)
+void	bubblesort(t_stk *stk_1, t_stk *stk_2, t_stat *stats, t_flag *flags)
 {
-	size_t	left;
 	size_t	index;
 
-	while (ft_get_disorder(stk->vals, stk->len))
+	while (stk_1->len)
 	{
-		left = stk->len - 1;
 		index = 0;
-		while (index < left)
+		while (index < stk_1->len - 1)
 		{
-			if (stk->vals[index] > stk->vals[index + 1])
-			{
-				left -= index;
-				while (index--)
-					r(stk, stats, flags);
-				s(stk, stats, flags);
-			}
+			if (stk_1->vals[0] > stk_1->vals[1])
+				s(stk_1, stats, flags);
+			r(stk_1, stats, flags);
 			index++;
-			r(stk, stats, flags);
 		}
+		p(stk_2, stk_1, stats, flags);
+		r(stk_2, stats, flags);
+	}
+	while (stk_2->len)
+	{
+		p(stk_1, stk_2, stats, flags);
 	}
 }

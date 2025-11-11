@@ -6,7 +6,7 @@
 /*   By: mawelsch <mawelsch@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/08 16:13:02 by mawelsch          #+#    #+#             */
-/*   Updated: 2025/11/10 23:00:22 by mawelsch         ###   ########.fr       */
+/*   Updated: 2025/11/11 01:41:28 by mawelsch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,6 @@ void	rotate(t_stk *stk);
 void	rev_rotate(t_stk *stk);
 
 //The sorting algorithms
-void	bubblesort(t_stk *stk, t_stat *stats, t_flag *flags);
+void	bubblesort(t_stk *stk_1, t_stk *stk_2, t_stat *stats, t_flag *flags);
 
 #endif //PUSH_SWAP_H
