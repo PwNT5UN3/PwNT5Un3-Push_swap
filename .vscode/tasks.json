@@ -9,6 +9,7 @@
                 "-fsanitize=address",
                 "-Llibft",
                 "-g",
+                "ops_utils.c",
                 "${file}",
                 "-o",
                 "${fileDirname}/${fileBasenameNoExtension}",

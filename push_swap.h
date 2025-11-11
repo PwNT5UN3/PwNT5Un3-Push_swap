@@ -6,7 +6,7 @@
 /*   By: abalcu <abalcu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/08 16:13:02 by mawelsch          #+#    #+#             */
-/*   Updated: 2025/11/11 03:27:13 by abalcu           ###   ########.fr       */
+/*   Updated: 2025/11/11 07:26:43 by abalcu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,13 +69,15 @@ void		ss(t_stk *stk_1, t_stk *stk_2);
 void		p(t_stk *to, t_stk *from);
 void		r(t_stk *stk);
 void		rr(t_stk *stk);
+void		rr_(t_stk *stk_1, t_stk *stk_2);
 void		rrr(t_stk *stk_1, t_stk *stk_2);
 
-// // The actual operations
-// void		swap(t_stk *stk);
-// void		push(t_stk *to, t_stk *from);
-// void		rotate(t_stk *stk);
-// void		rev_rotate(t_stk *stk);
+// The actual operations
+void		swap(int *arr);
+void		rotate(int *arr, size_t len);
+void		rrotate(int *arr, size_t len);
+int			pop(int *arr, size_t *len);
+void		push(int val, int *arr, size_t *len);
 
 // The sorting algorithms
 void		bubblesort(t_stk *stk, t_stat *stats, t_flag *flags);
