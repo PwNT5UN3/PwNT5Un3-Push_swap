@@ -3,24 +3,29 @@
 /*                                                        :::      ::::::::   */
 /*   ops.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mawelsch <mawelsch@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: abalcu <abalcu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/10 17:50:08 by mawelsch          #+#    #+#             */
-/*   Updated: 2025/11/10 18:24:28 by mawelsch         ###   ########.fr       */
+/*   Updated: 2025/11/11 00:50:26 by abalcu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	swap(t_stk *stk)
+void	swap(int *arr)
 {
-	int	tmp;
+	arr[0] ^= arr[1];
+	arr[1] ^= arr[0];
+	arr[0] ^= arr[1];
+}
 
+void	s(t_stk *stk)
+{
 	if (stk->len > 1)
 	{
-		tmp = stk->vals[0];
-		stk->vals[0] = stk->vals[1];
-		stk->vals[1] = tmp;
+		swap(stk->vals);
+		stk->stats->ops++;
+		stk->stats->s[stk->name - 'a']++;
 	}
 }
 

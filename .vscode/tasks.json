@@ -8,14 +8,11 @@
                 "-fdiagnostics-color=always",
                 "-fsanitize=address",
                 "-Llibft",
-                "-Lft_printf",
                 "-g",
-                "utils.c",
                 "${file}",
                 "-o",
                 "${fileDirname}/${fileBasenameNoExtension}",
                 "-lft",
-                "-lftprintf",
             ],
             "options": {
                 "cwd": "${fileDirname}"
