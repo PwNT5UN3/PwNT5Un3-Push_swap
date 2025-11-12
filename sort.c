@@ -6,7 +6,7 @@
 /*   By: abalcu <abalcu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/12 04:33:02 by abalcu            #+#    #+#             */
-/*   Updated: 2025/11/12 06:36:59 by abalcu           ###   ########.fr       */
+/*   Updated: 2025/11/12 09:35:30 by abalcu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 void	ps_sort(t_stk *a, t_stk *b)
 {
-	a->sts->disorder = get_disorder(a->vals, a->len);
 	if (a->flgs->strategy == SIMPLE)
 		simple_sort(a, b);
 	else if (a->flgs->strategy == MEDIUM)

@@ -6,7 +6,7 @@
 /*   By: abalcu <abalcu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/08 16:39:52 by mawelsch          #+#    #+#             */
-/*   Updated: 2025/11/12 06:14:21 by abalcu           ###   ########.fr       */
+/*   Updated: 2025/11/12 09:37:07 by abalcu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int	parse_strat(t_flag *flags, char const *arg)
 
 int	parse_flag(t_flag *flags, int *pos, int argc, char const *argv[])
 {
-	while (*pos < argc && !is_num(argv[*pos]) && *argv[*pos])
+	while (*pos < argc && !is_num(argv[*pos]) && !ft_strchr(argv[*pos], ' '))
 	{
 		flags->valid_flag += parse_strat(flags, argv[*pos]);
 		flags->valid_flag += parse_bench(flags, argv[*pos]);
@@ -55,7 +55,7 @@ int	parse_flag(t_flag *flags, int *pos, int argc, char const *argv[])
 
 int	contains(int *arr, int nbr, size_t len)
 {
-	if (!len)
+	if (!len || !arr)
 		return (0);
 	while (len--)
 	{
@@ -68,25 +68,10 @@ int	contains(int *arr, int nbr, size_t len)
 
 int	parse_numargs(t_stk *stk, int *pos, int argc, char const *argv[])
 {
-	int	nbr;
-
-	stk->len = 0;
-	stk->cap = argc - *pos;
 	stk->sts->strategy = stk->flgs->strategy;
-	stk->vals = (int *)ft_calloc(stk->cap, sizeof(int));
-	if (!stk->vals)
-		return (perror(), 0);
 	while (*pos < argc)
 	{
-		if (is_num(argv[*pos]))
-		{
-			nbr = ft_atoi(argv[*pos]);
-			if (contains(stk->vals, nbr, stk->len))
-				return (free(stk->vals), perror(), 0);
-			stk->vals[stk->len] = ft_atoi(argv[*pos]);
-			stk->len++;
-		}
-		else
+		if (!parse_args_str(stk, &stk->len, argv[*pos]))
 			return (free(stk->vals), perror(), 0);
 		(*pos)++;
 	}

@@ -6,7 +6,7 @@
 /*   By: abalcu <abalcu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/08 16:13:02 by mawelsch          #+#    #+#             */
-/*   Updated: 2025/11/12 06:24:18 by abalcu           ###   ########.fr       */
+/*   Updated: 2025/11/12 08:42:48 by abalcu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,9 @@ int			parse_bench(t_flag *flags, char const *arg);
 int			parse_strat(t_flag *flags, char const *arg);
 int			parse_flag(t_flag *flags, int *pos, int argc, char const *argv[]);
 int			parse_numargs(t_stk *stk, int *pos, int argc, char const *argv[]);
+int			parse_args_str(t_stk *stk, size_t *len, const char *argv);
 float		get_disorder(int *stack, int size);
+int			contains(int *arr, int nbr, size_t len);
 int			is_num(char const *arg);
 void		pbench(t_stat *sts);
 void		perror(void);
