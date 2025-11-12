@@ -6,7 +6,7 @@
 /*   By: mawelsch <mawelsch@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/11 02:09:42 by mawelsch          #+#    #+#             */
-/*   Updated: 2025/11/12 16:51:26 by mawelsch         ###   ########.fr       */
+/*   Updated: 2025/11/12 17:05:29 by mawelsch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,13 @@ typedef struct s_mrg
 	size_t	sublist_size;
 }	t_mrg;
 
-void	empty_b(t_stk *stk_1, t_stk *stk_2, t_stat *stats)
+void	empty_b(t_stk *stk_1, t_stk *stk_2)
 {
 	while (stk_2->len)
-		p(stk_1, stk_2, stats);
+		p(stk_1, stk_2);
 }
 
-void	merge_from_a(t_stk *stk_1, t_stk *stk_2, t_stat *stats, t_mrg *mrg)
+void	merge_from_a(t_stk *stk_1, t_stk *stk_2, t_mrg *mrg)
 {
 	size_t	sublists;
 	size_t	lst_1_len;
@@ -41,18 +41,18 @@ void	merge_from_a(t_stk *stk_1, t_stk *stk_2, t_stat *stats, t_mrg *mrg)
 		while (lst_1_len && lst_2_len)
 			;//im fucked
 		while (lst_1_len--)
-			p(stk_2, stk_1, stats);
+			p(stk_2, stk_1);
 		while (lst_2_len--)
-			p(stk_2, stk_1, stats);
+			p(stk_2, stk_1);
 		sublists -= 2;
 	}
 	while (stk_1->len)
-		p(stk_2, stk_1, stats);
+		p(stk_2, stk_1);
 	mrg->sublist_count = ((mrg->sublist_count / 2) + mrg->sublist_count % 2);
 	mrg->sublist_size *= 2;
 }
 
-void	merge_from_b(t_stk *stk_1, t_stk *stk_2, t_stat *stats, t_mrg *mrg)
+void	merge_from_b(t_stk *stk_1, t_stk *stk_2, t_mrg *mrg)
 {
 	
 }
@@ -67,10 +67,10 @@ void	mergesort(t_stk *stk_1, t_stk *stk_2, t_stat *stats)
 	while (mrg.sublist_size != mrg.full_size)
 	{
 		if (stk_1->len)
-			merge_from_a(stk_1, stk_2, stats, &mrg);
+			merge_from_a(stk_1, stk_2, &mrg);
 		else
-			merge_from_b(stk_1, stk_2, stats, &mrg);
+			merge_from_b(stk_1, stk_2, &mrg);
 	}
 	if (stk_2->len)
-		empty_b(stk_1, stk_2, stats);
+		empty_b(stk_1, stk_2);
 }

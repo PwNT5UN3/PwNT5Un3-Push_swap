@@ -1,36 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   simple_sort.c                                      :+:      :+:    :+:   */
+/*   bubblesort.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mawelsch <mawelsch@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/08 17:55:24 by mawelsch          #+#    #+#             */
-/*   Updated: 2025/11/12 02:03:44 by mawelsch         ###   ########.fr       */
+/*   Updated: 2025/11/12 17:06:44 by mawelsch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	bubblesort(t_stk *stk_1, t_stk *stk_2, t_stat *stats)
+void	bubblesort(t_stk *a, t_stk *b, t_stat *stats)
 {
 	size_t	index;
 
-	while (stk_1->len)
+	while (a->len)
 	{
 		index = 0;
-		while (index < stk_1->len - 1)
+		while (index < a->len - 1)
 		{
-			if (stk_1->vals[0] > stk_1->vals[1])
-				s(stk_1, stats);
-			r(stk_1, stats);
+			if (a->vals[0] > a->vals[1])
+				s(a);
+			r(a);
 			index++;
 		}
-		p(stk_2, stk_1, stats);
+		p(b, a);
 	}
-	while (stk_2->len)
+	while (b->len)
 	{
-		p(stk_1, stk_2, stats);
-		r(stk_1, stats);
+		p(a, b);
+		r(a);
 	}
 }
