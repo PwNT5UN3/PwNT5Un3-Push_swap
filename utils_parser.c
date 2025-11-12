@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parser.c                                           :+:      :+:    :+:   */
+/*   utils_parser.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abalcu <abalcu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/08 16:39:52 by mawelsch          #+#    #+#             */
-/*   Updated: 2025/11/12 04:31:22 by abalcu           ###   ########.fr       */
+/*   Updated: 2025/11/12 06:14:21 by abalcu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap_utils.h"
+#include "push_swap.h"
 
 int	parse_bench(t_flag *flags, char const *arg)
 {
@@ -53,10 +53,26 @@ int	parse_flag(t_flag *flags, int *pos, int argc, char const *argv[])
 	return (1);
 }
 
+int	contains(int *arr, int nbr, size_t len)
+{
+	if (!len)
+		return (0);
+	while (len--)
+	{
+		if (*arr == nbr)
+			return (1);
+		arr++;
+	}
+	return (0);
+}
+
 int	parse_numargs(t_stk *stk, int *pos, int argc, char const *argv[])
 {
+	int	nbr;
+
 	stk->len = 0;
 	stk->cap = argc - *pos;
+	stk->sts->strategy = stk->flgs->strategy;
 	stk->vals = (int *)ft_calloc(stk->cap, sizeof(int));
 	if (!stk->vals)
 		return (perror(), 0);
@@ -64,6 +80,9 @@ int	parse_numargs(t_stk *stk, int *pos, int argc, char const *argv[])
 	{
 		if (is_num(argv[*pos]))
 		{
+			nbr = ft_atoi(argv[*pos]);
+			if (contains(stk->vals, nbr, stk->len))
+				return (free(stk->vals), perror(), 0);
 			stk->vals[stk->len] = ft_atoi(argv[*pos]);
 			stk->len++;
 		}

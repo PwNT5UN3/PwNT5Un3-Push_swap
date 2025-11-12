@@ -6,12 +6,11 @@
 /*   By: abalcu <abalcu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/12 03:47:19 by abalcu            #+#    #+#             */
-/*   Updated: 2025/11/12 04:16:29 by abalcu           ###   ########.fr       */
+/*   Updated: 2025/11/12 05:11:23 by abalcu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "include/push_swap.h"
-#include <stdio.h>
+#include "push_swap.h"
 
 void	parr(int *arr, size_t len)
 {

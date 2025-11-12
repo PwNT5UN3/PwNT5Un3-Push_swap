@@ -6,11 +6,11 @@
 /*   By: abalcu <abalcu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/12 03:46:40 by abalcu            #+#    #+#             */
-/*   Updated: 2025/11/12 04:31:19 by abalcu           ###   ########.fr       */
+/*   Updated: 2025/11/12 05:11:39 by abalcu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap_utils.h"
+#include "push_swap.h"
 
 void	rr_(t_stk *stk_1, t_stk *stk_2)
 {

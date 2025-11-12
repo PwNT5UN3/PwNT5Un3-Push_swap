@@ -6,7 +6,7 @@
 /*   By: abalcu <abalcu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/07 13:43:22 by mawelsch          #+#    #+#             */
-/*   Updated: 2025/11/12 04:49:07 by abalcu           ###   ########.fr       */
+/*   Updated: 2025/11/12 06:40:37 by abalcu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	main(int argc, char const *argv[])
 	flgs = (t_flag){0};
 	sts = (t_stat){0};
 	a = (t_stk){.name = 'a', .flgs = &flgs, .sts = &sts};
-	b = (t_stk){.name = 'b', .flgs = &flgs, .sts = &sts, .len = 0};
+	b = (t_stk){.name = 'b', .flgs = &flgs, .sts = &sts, .len = 0, .vals = 0};
 	if (!parse_flag(&flgs, &pos, argc, argv))
 		return (1);
 	if (!parse_numargs(&a, &pos, argc, argv))
@@ -35,7 +35,7 @@ int	main(int argc, char const *argv[])
 	if (!b.vals)
 		return (perror(), 1);
 	b.cap = a.cap;
-	ft_printf("Pass\n");
-	// ps_sort(&a, &b);
+	// ft_printf("Pass\n");
+	ps_sort(&a, &b);
 	return (free(a.vals), free(b.vals), 0);
 }

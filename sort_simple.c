@@ -6,33 +6,32 @@
 /*   By: abalcu <abalcu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/08 17:55:24 by mawelsch          #+#    #+#             */
-/*   Updated: 2025/11/12 04:35:17 by abalcu           ###   ########.fr       */
+/*   Updated: 2025/11/12 06:23:57 by abalcu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
 // bubble sort
-void	simple_sort(t_stk *stk)
+void	simple_sort(t_stk *a, t_stk *b)
 {
-	size_t	left;
 	size_t	index;
 
-	while (get_disorder(stk->vals, stk->len))
+	while (a->len)
 	{
-		left = stk->len - 1;
 		index = 0;
-		while (index < left)
+		while (index < a->len - 1)
 		{
-			if (stk->vals[index] > stk->vals[index + 1])
-			{
-				left -= index;
-				while (index--)
-					r(stk);
-				s(stk);
-			}
+			if (a->vals[0] > a->vals[1])
+				s(a);
+			r(a);
 			index++;
-			r(stk);
 		}
+		p(b, a);
+	}
+	while (b->len)
+	{
+		p(a, b);
+		r(a);
 	}
 }
