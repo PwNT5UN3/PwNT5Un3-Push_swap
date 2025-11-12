@@ -6,11 +6,11 @@
 /*   By: abalcu <abalcu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/11 07:24:31 by abalcu            #+#    #+#             */
-/*   Updated: 2025/11/11 07:24:49 by abalcu           ###   ########.fr       */
+/*   Updated: 2025/11/12 04:16:39 by abalcu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "include/push_swap.h"
 
 void	swap(int *arr)
 {

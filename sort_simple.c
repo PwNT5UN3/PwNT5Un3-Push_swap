@@ -1,23 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   simple_sort.c                                      :+:      :+:    :+:   */
+/*   sort_simple.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mawelsch <mawelsch@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: abalcu <abalcu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/08 17:55:24 by mawelsch          #+#    #+#             */
-/*   Updated: 2025/11/10 23:41:50 by mawelsch         ###   ########.fr       */
+/*   Updated: 2025/11/12 04:15:17 by abalcu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "include/push_swap.h"
 
 void	bubblesort(t_stk *stk, t_stat *stats, t_flag *flags)
 {
 	size_t	left;
 	size_t	index;
 
-	while (ft_get_disorder(stk->vals, stk->len))
+	while (get_disorder(stk->vals, stk->len))
 	{
 		left = stk->len - 1;
 		index = 0;

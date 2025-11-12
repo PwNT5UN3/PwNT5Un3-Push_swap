@@ -6,7 +6,7 @@
 /*   By: abalcu <abalcu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/08 16:13:02 by mawelsch          #+#    #+#             */
-/*   Updated: 2025/11/11 07:26:43 by abalcu           ###   ########.fr       */
+/*   Updated: 2025/11/12 03:59:13 by abalcu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ typedef struct s_flag
 	t_strat	strategy;
 	int		strat_set;
 	int		bench_set;
-	int		invalid_arg;
+	int		valid_flag;
 }			t_flag;
 
 typedef struct s_stat
@@ -48,20 +48,21 @@ typedef struct s_stat
 
 typedef struct s_stk
 {
-	t_stat	*stats;
-	t_flag	*flags;
+	t_stat	*sts;
+	t_flag	*flgs;
 	int		*vals;
 	size_t	len;
+	size_t	cap;
 	char	name;
 }			t_stk;
 
-int			get_modes(char **argv, t_flag *mode);
-int			parse_selector(int selector, t_flag *mode);
-void		invalid_arg(t_flag *mode);
-int			check_option(char *value);
-int			fill_stack_a(char **argv, int argc, t_stk *stack_a, t_flag *mode);
-int			check_for_duplicates(t_stk *stack_a, int index_2);
-double		ft_get_disorder(int *stack, int size);
+int			parse_bench(t_flag *flags, char const *arg);
+int			parse_strat(t_flag *flags, char const *arg);
+int			parse_flag(t_flag *flags, int *pos, int argc, char const *argv[]);
+int			parse_numargs(t_stk *stk, int *pos, int argc, char const *argv[]);
+float		get_disorder(int *stack, int size);
+int			is_num(char const *arg);
+void		perror(void);
 
 // The methods
 void		s(t_stk *stk);
