@@ -6,7 +6,7 @@
 /*   By: mawelsch <mawelsch@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/08 16:13:02 by mawelsch          #+#    #+#             */
-/*   Updated: 2025/11/11 01:41:28 by mawelsch         ###   ########.fr       */
+/*   Updated: 2025/11/12 01:44:39 by mawelsch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ typedef struct s_stat
 	t_strat	strategy;
 	int		size_a;
 	int		size_b;
+	int		bench_set;
 }	t_stat;
 
 int		get_modes(char **argv, t_flag *mode);
@@ -66,13 +67,13 @@ int		check_for_duplicates(t_stk *stack_a, int index_2);
 double	ft_get_disorder(int *stack, int size);
 
 //The methods
-void	s(t_stk *stk, t_stat *stats, t_flag *flags);
-void	p(t_stk *to, t_stk *from, t_stat *stats, t_flag *flags);
-void	r(t_stk *stk, t_stat *stats, t_flag *flags);
-void	rr(t_stk *stk, t_stat *stats, t_flag *flags);
-void	ss(t_stk *stk_1, t_stk *stk_2, t_stat *stats, t_flag *flags);
-void	ra(t_stk *stk_1, t_stk *stk_2, t_stat *stats, t_flag *flags);
-void	rrr(t_stk *stk_1, t_stk *stk_2, t_stat *stats, t_flag *flags);
+void	s(t_stk *stk, t_stat *stats);
+void	p(t_stk *to, t_stk *from, t_stat *stats);
+void	r(t_stk *stk, t_stat *stats);
+void	rr(t_stk *stk, t_stat *stats);
+void	ss(t_stk *stk_1, t_stk *stk_2, t_stat *stats);
+void	ra(t_stk *stk_1, t_stk *stk_2, t_stat *stats);
+void	rrr(t_stk *stk_1, t_stk *stk_2, t_stat *stats);
 
 //The actual operations
 void	swap(t_stk *stk);
@@ -81,6 +82,9 @@ void	rotate(t_stk *stk);
 void	rev_rotate(t_stk *stk);
 
 //The sorting algorithms
-void	bubblesort(t_stk *stk_1, t_stk *stk_2, t_stat *stats, t_flag *flags);
+void	bubblesort(t_stk *stk_1, t_stk *stk_2, t_stat *stats);
+
+//testing it out
+void	gulag_sort(t_stk *stk_1, t_stk *stk_2, t_stat *stats);
 
 #endif //PUSH_SWAP_H

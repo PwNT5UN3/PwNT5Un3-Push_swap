@@ -6,7 +6,7 @@
 /*   By: mawelsch <mawelsch@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/07 13:43:22 by mawelsch          #+#    #+#             */
-/*   Updated: 2025/11/11 01:40:46 by mawelsch         ###   ########.fr       */
+/*   Updated: 2025/11/12 02:05:27 by mawelsch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,14 +83,13 @@ int	main(int argc, char **argv)
 	fill_success = 0;
 	mode = (t_flag){0};
 	stats = (t_stat){0};
-	ft_printf("1\n");
 	a = (t_stk){.name = 'a', .len = 0, .vals = 0};
 	b = (t_stk){.name = 'b', .len = 0, .vals = 0};
 	fill_success = fill_stack_a(argv, argc, &a, &mode);
 	b.vals = ft_calloc(a.len, sizeof(int));
 	stats.disorder = ft_get_disorder(a.vals, a.len);
+	stats.bench_set = mode.bench_set;
 	if (fill_success == 0 || !b.vals)
 		return (free(a.vals), free(b.vals), 0);
-	bubblesort(&a, &b, &stats, &mode);
-	ft_printf("\n2\n");
+	gulag_sort(&a, &b, &stats);
 }

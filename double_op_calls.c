@@ -6,15 +6,15 @@
 /*   By: mawelsch <mawelsch@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/10 17:00:09 by mawelsch          #+#    #+#             */
-/*   Updated: 2025/11/10 22:29:25 by mawelsch         ###   ########.fr       */
+/*   Updated: 2025/11/11 14:56:33 by mawelsch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ss(t_stk *stk_1, t_stk *stk_2, t_stat *stats, t_flag *flags)
+void	ss(t_stk *stk_1, t_stk *stk_2, t_stat *stats)
 {
-	if (flags->bench_set)
+	if (stats->bench_set)
 	{
 		stats->ss++;
 		stats->ops++;
@@ -25,9 +25,9 @@ void	ss(t_stk *stk_1, t_stk *stk_2, t_stat *stats, t_flag *flags)
 	swap(stk_2);
 }
 
-void	ra(t_stk *stk_1, t_stk *stk_2, t_stat *stats, t_flag *flags)
+void	ra(t_stk *stk_1, t_stk *stk_2, t_stat *stats)
 {
-	if (flags->bench_set)
+	if (stats->bench_set)
 	{
 		stats->rr++;
 		stats->ops++;
@@ -38,9 +38,9 @@ void	ra(t_stk *stk_1, t_stk *stk_2, t_stat *stats, t_flag *flags)
 	rotate(stk_2);
 }
 
-void	rrr(t_stk *stk_1, t_stk *stk_2, t_stat *stats, t_flag *flags)
+void	rrr(t_stk *stk_1, t_stk *stk_2, t_stat *stats)
 {
-	if (flags->bench_set)
+	if (stats->bench_set)
 	{
 		stats->rrr++;
 		stats->ops++;

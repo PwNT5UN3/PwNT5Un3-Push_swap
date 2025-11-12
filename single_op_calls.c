@@ -6,15 +6,15 @@
 /*   By: mawelsch <mawelsch@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/10 17:00:26 by mawelsch          #+#    #+#             */
-/*   Updated: 2025/11/10 22:12:19 by mawelsch         ###   ########.fr       */
+/*   Updated: 2025/11/11 14:58:57 by mawelsch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	s(t_stk *stk, t_stat *stats, t_flag *flags)
+void	s(t_stk *stk, t_stat *stats)
 {
-	if (flags->bench_set)
+	if (stats->bench_set)
 	{
 		if (stk->name == 'a')
 			stats->sa++;
@@ -27,9 +27,9 @@ void	s(t_stk *stk, t_stat *stats, t_flag *flags)
 	swap(stk);
 }
 
-void	p(t_stk *to, t_stk *from, t_stat *stats, t_flag *flags)
+void	p(t_stk *to, t_stk *from, t_stat *stats)
 {
-	if (flags->bench_set)
+	if (stats->bench_set)
 	{
 		if (to->name == 'a')
 			stats->sa++;
@@ -42,9 +42,9 @@ void	p(t_stk *to, t_stk *from, t_stat *stats, t_flag *flags)
 	push(to, from);
 }
 
-void	r(t_stk *stk, t_stat *stats, t_flag *flags)
+void	r(t_stk *stk, t_stat *stats)
 {
-	if (flags->bench_set)
+	if (stats->bench_set)
 	{
 		if (stk->name == 'a')
 			stats->sa++;
@@ -57,9 +57,9 @@ void	r(t_stk *stk, t_stat *stats, t_flag *flags)
 	rotate(stk);
 }
 
-void	rr(t_stk *stk, t_stat *stats, t_flag *flags)
+void	rr(t_stk *stk, t_stat *stats)
 {
-	if (flags->bench_set)
+	if (stats->bench_set)
 	{
 		if (stk->name == 'a')
 			stats->sa++;
