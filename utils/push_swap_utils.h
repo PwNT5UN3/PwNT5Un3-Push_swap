@@ -1,18 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   push_swap_utils.h                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abalcu <abalcu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/08 16:13:02 by mawelsch          #+#    #+#             */
-/*   Updated: 2025/11/12 03:59:13 by abalcu           ###   ########.fr       */
+/*   Created: 2025/11/12 04:26:55 by abalcu            #+#    #+#             */
+/*   Updated: 2025/11/12 04:29:49 by abalcu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
-# include "libft/libft.h"
+#ifndef PUSH_SWAP_UTILS_H
+# define PUSH_SWAP_UTILS_H
+# include <stddef.h>
+# include <stdlib.h>
+# include <unistd.h>
 
 typedef enum e_strat
 {
@@ -62,9 +64,9 @@ int			parse_flag(t_flag *flags, int *pos, int argc, char const *argv[]);
 int			parse_numargs(t_stk *stk, int *pos, int argc, char const *argv[]);
 float		get_disorder(int *stack, int size);
 int			is_num(char const *arg);
+void		pbench(t_stat *sts);
 void		perror(void);
 
-// The methods
 void		s(t_stk *stk);
 void		ss(t_stk *stk_1, t_stk *stk_2);
 void		p(t_stk *to, t_stk *from);
@@ -73,14 +75,10 @@ void		rr(t_stk *stk);
 void		rr_(t_stk *stk_1, t_stk *stk_2);
 void		rrr(t_stk *stk_1, t_stk *stk_2);
 
-// The actual operations
 void		swap(int *arr);
 void		rotate(int *arr, size_t len);
 void		rrotate(int *arr, size_t len);
 int			pop(int *arr, size_t *len);
 void		push(int val, int *arr, size_t *len);
 
-// The sorting algorithms
-void		bubblesort(t_stk *stk, t_stat *stats, t_flag *flags);
-
-#endif // PUSH_SWAP_H
+#endif

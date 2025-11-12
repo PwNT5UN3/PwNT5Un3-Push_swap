@@ -6,11 +6,11 @@
 /*   By: abalcu <abalcu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/07 13:43:22 by mawelsch          #+#    #+#             */
-/*   Updated: 2025/11/12 04:16:22 by abalcu           ###   ########.fr       */
+/*   Updated: 2025/11/12 04:49:07 by abalcu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "include/push_swap.h"
+#include "push_swap.h"
 
 int	main(int argc, char const *argv[])
 {
@@ -34,6 +34,8 @@ int	main(int argc, char const *argv[])
 	b.vals = (int *)ft_calloc(a.cap, sizeof(int));
 	if (!b.vals)
 		return (perror(), 1);
+	b.cap = a.cap;
 	ft_printf("Pass\n");
+	// ps_sort(&a, &b);
 	return (free(a.vals), free(b.vals), 0);
 }

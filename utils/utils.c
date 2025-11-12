@@ -6,11 +6,11 @@
 /*   By: abalcu <abalcu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/03 07:30:34 by abalcu            #+#    #+#             */
-/*   Updated: 2025/11/12 04:16:54 by abalcu           ###   ########.fr       */
+/*   Updated: 2025/11/12 04:30:59 by abalcu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "include/push_swap.h"
+#include "push_swap_utils.h"
 
 float	get_disorder(int *stack, int size)
 {

@@ -6,11 +6,11 @@
 /*   By: abalcu <abalcu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/11 00:50:38 by abalcu            #+#    #+#             */
-/*   Updated: 2025/11/12 04:16:36 by abalcu           ###   ########.fr       */
+/*   Updated: 2025/11/12 04:31:09 by abalcu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "include/push_swap.h"
+#include "push_swap_utils.h"
 
 char	*ptos(double nbr)
 {

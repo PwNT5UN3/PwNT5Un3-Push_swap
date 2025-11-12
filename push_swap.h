@@ -1,38 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sort_simple.c                                      :+:      :+:    :+:   */
+/*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abalcu <abalcu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/08 17:55:24 by mawelsch          #+#    #+#             */
-/*   Updated: 2025/11/12 04:35:17 by abalcu           ###   ########.fr       */
+/*   Created: 2025/11/08 16:13:02 by mawelsch          #+#    #+#             */
+/*   Updated: 2025/11/12 04:38:52 by abalcu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#ifndef PUSH_SWAP_H
+# define PUSH_SWAP_H
+# include "libft/libft.h"
+# include "utils/push_swap_utils.h"
 
-// bubble sort
-void	simple_sort(t_stk *stk)
-{
-	size_t	left;
-	size_t	index;
+void	ps_sort(t_stk *a, t_stk *b);
 
-	while (get_disorder(stk->vals, stk->len))
-	{
-		left = stk->len - 1;
-		index = 0;
-		while (index < left)
-		{
-			if (stk->vals[index] > stk->vals[index + 1])
-			{
-				left -= index;
-				while (index--)
-					r(stk);
-				s(stk);
-			}
-			index++;
-			r(stk);
-		}
-	}
-}
+void	simple_sort(t_stk *stk);
+void	medium_sort(t_stk *a, t_stk *b);
+void	complex_sort(t_stk *a, t_stk *b);
+void	adaptive_sort(t_stk *a, t_stk *b);
+
+#endif // PUSH_SWAP_H

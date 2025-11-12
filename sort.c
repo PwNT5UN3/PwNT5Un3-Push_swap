@@ -1,38 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sort_simple.c                                      :+:      :+:    :+:   */
+/*   sort.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abalcu <abalcu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/08 17:55:24 by mawelsch          #+#    #+#             */
-/*   Updated: 2025/11/12 04:35:17 by abalcu           ###   ########.fr       */
+/*   Created: 2025/11/12 04:33:02 by abalcu            #+#    #+#             */
+/*   Updated: 2025/11/12 04:42:11 by abalcu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-// bubble sort
-void	simple_sort(t_stk *stk)
+void	ps_sort(t_stk *a, t_stk *b)
 {
-	size_t	left;
-	size_t	index;
-
-	while (get_disorder(stk->vals, stk->len))
-	{
-		left = stk->len - 1;
-		index = 0;
-		while (index < left)
-		{
-			if (stk->vals[index] > stk->vals[index + 1])
-			{
-				left -= index;
-				while (index--)
-					r(stk);
-				s(stk);
-			}
-			index++;
-			r(stk);
-		}
-	}
+	if (a->sts->strategy == SIMPLE)
+		simple_sort(a);
+	else if (a->sts->strategy == MEDIUM)
+		medium_sort(a, b);
+	else if (a->sts->strategy == COMPLEX)
+		complex_sort(a, b);
+	else
+		adaptive_sort(a, b);
+	if (a->flgs->bench_set)
+		pbench(a->sts);
 }
