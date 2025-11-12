@@ -6,19 +6,19 @@
 #    By: mawelsch <mawelsch@student.42heilbronn.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/11/07 15:12:42 by mawelsch          #+#    #+#              #
-#    Updated: 2025/11/12 16:56:10 by mawelsch         ###   ########.fr        #
+#    Updated: 2025/11/12 17:42:57 by mawelsch         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC = cc
 
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = #-Wall -Wextra -Werror
 
 NAME = push_swap
 
 CFILES = 	push_swap.c sort_adaptive.c sort.c sort_complex.c sort_medium.c \
 			sort_simple.c utils_bench.c utils.c utils_ops1.c utils_ops2.c \
-			utils_ops3.c utils_parser.c
+			utils_ops3.c utils_parser.c utils_arg_str.c
 
 OFILES = $(CFILES:.c=.o)
 

@@ -6,7 +6,7 @@
 /*   By: mawelsch <mawelsch@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/11 02:09:42 by mawelsch          #+#    #+#             */
-/*   Updated: 2025/11/12 17:05:29 by mawelsch         ###   ########.fr       */
+/*   Updated: 2025/11/12 18:11:37 by mawelsch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,29 @@ void	merge_from_a(t_stk *stk_1, t_stk *stk_2, t_mrg *mrg)
 
 void	merge_from_b(t_stk *stk_1, t_stk *stk_2, t_mrg *mrg)
 {
-	
+	size_t	sublists;
+	size_t	lst_1_len;
+	size_t	lst_2_len;
+
+	sublists = mrg->sublist_count;
+	while (sublists > 1)
+	{
+		lst_1_len = mrg->sublist_size;
+		lst_2_len = mrg->sublist_size;
+		if (stk_2->len < lst_2_len)
+			lst_2_len = stk_2->len;
+		while (lst_1_len && lst_2_len)
+			;//im fucked
+		while (lst_1_len--)
+			p(stk_1, stk_2);
+		while (lst_2_len--)
+			p(stk_1, stk_2);
+		sublists -= 2;
+	}
+	while (stk_2->len)
+		p(stk_1, stk_2);
+	mrg->sublist_count = ((mrg->sublist_count / 2) + mrg->sublist_count % 2);
+	mrg->sublist_size *= 2;
 }
 
 void	mergesort(t_stk *stk_1, t_stk *stk_2, t_stat *stats)
