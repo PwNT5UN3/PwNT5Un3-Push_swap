@@ -6,7 +6,7 @@
 /*   By: mawelsch <mawelsch@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/08 16:13:02 by mawelsch          #+#    #+#             */
-/*   Updated: 2025/11/12 16:56:59 by mawelsch         ###   ########.fr       */
+/*   Updated: 2025/11/12 18:50:59 by mawelsch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,36 +56,39 @@ typedef struct s_stk
 	char	name;
 }			t_stk;
 
-int			parse_bench(t_flag *flags, char const *arg);
-int			parse_strat(t_flag *flags, char const *arg);
-int			parse_flag(t_flag *flags, int *pos, int argc, char const *argv[]);
-int			parse_numargs(t_stk *stk, int *pos, int argc, char const *argv[]);
-int			parse_args_str(t_stk *stk, size_t *len, const char *argv);
-float		get_disorder(int *stack, int size);
-int			contains(int *arr, int nbr, size_t len);
-int			is_num(char const *arg);
-void		pbench(t_stat *sts);
-void		perror(void);
+int		parse_bench(t_flag *flags, char const *arg);
+int		parse_strat(t_flag *flags, char const *arg);
+int		parse_flag(t_flag *flags, int *pos, int argc, char const *argv[]);
+int		parse_numargs(t_stk *stk, int *pos, int argc, char const *argv[]);
+int		parse_args_str(t_stk *stk, size_t *len, const char *argv);
+float	get_disorder(int *stack, int size);
+int		contains(int *arr, int nbr, size_t len);
+int		is_num(char const *arg);
+void	pbench(t_stat *sts);
+void	perror(void);
 
-void		s(t_stk *stk);
-void		ss(t_stk *stk_1, t_stk *stk_2);
-void		p(t_stk *to, t_stk *from);
-void		r(t_stk *stk);
-void		rr(t_stk *stk);
-void		rr_(t_stk *stk_1, t_stk *stk_2);
-void		rrr(t_stk *stk_1, t_stk *stk_2);
+void	s(t_stk *stk);
+void	ss(t_stk *stk_1, t_stk *stk_2);
+void	p(t_stk *to, t_stk *from);
+void	r(t_stk *stk);
+void	rr(t_stk *stk);
+void	rr_(t_stk *stk_1, t_stk *stk_2);
+void	rrr(t_stk *stk_1, t_stk *stk_2);
 
-void		swap(int *arr);
-void		rotate(int *arr, size_t len);
-void		rrotate(int *arr, size_t len);
-int			pop(int *arr, size_t *len);
-void		push(int val, int *arr, size_t *len);
+void	swap(int *arr);
+void	rotate(int *arr, size_t len);
+void	rrotate(int *arr, size_t len);
+int		pop(int *arr, size_t *len);
+void	push(int val, int *arr, size_t *len);
 
-void		ps_sort(t_stk *a, t_stk *b);
+void	ps_sort(t_stk *a, t_stk *b);
 
-void		simple_sort(t_stk *a, t_stk *b);
-void		medium_sort(t_stk *a, t_stk *b);
-void		complex_sort(t_stk *a, t_stk *b);
-void		adaptive_sort(t_stk *a, t_stk *b);
+void	small_merger(t_stk *a, t_stk *b, size_t *lst_1_len, size_t *lst_2_len);
+void	big_merger(t_stk *a, t_stk *b, size_t *lst_1_len, size_t *lst_2_len);
+
+void	simple_sort(t_stk *a, t_stk *b);
+void	medium_sort(t_stk *a, t_stk *b);
+void	complex_sort(t_stk *a, t_stk *b);
+void	adaptive_sort(t_stk *a, t_stk *b);
 
 #endif // PUSH_SWAP_H

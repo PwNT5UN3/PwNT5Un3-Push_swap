@@ -6,7 +6,7 @@
 /*   By: mawelsch <mawelsch@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/11 02:09:42 by mawelsch          #+#    #+#             */
-/*   Updated: 2025/11/12 18:11:37 by mawelsch         ###   ########.fr       */
+/*   Updated: 2025/11/12 18:58:42 by mawelsch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	merge_from_a(t_stk *stk_1, t_stk *stk_2, t_mrg *mrg)
 		if (stk_1->len < lst_2_len)
 			lst_2_len = stk_1->len;
 		while (lst_1_len && lst_2_len)
-			;//im fucked
+			small_merger(stk_1, stk_2, &lst_1_len, &lst_2_len);
 		while (lst_1_len--)
 			p(stk_2, stk_1);
 		while (lst_2_len--)
@@ -66,7 +66,7 @@ void	merge_from_b(t_stk *stk_1, t_stk *stk_2, t_mrg *mrg)
 		if (stk_2->len < lst_2_len)
 			lst_2_len = stk_2->len;
 		while (lst_1_len && lst_2_len)
-			;//im fucked
+			small_merger(stk_1, stk_2, &lst_1_len, &lst_2_len);
 		while (lst_1_len--)
 			p(stk_1, stk_2);
 		while (lst_2_len--)
@@ -79,20 +79,20 @@ void	merge_from_b(t_stk *stk_1, t_stk *stk_2, t_mrg *mrg)
 	mrg->sublist_size *= 2;
 }
 
-void	mergesort(t_stk *stk_1, t_stk *stk_2, t_stat *stats)
+void	mergesort(t_stk *a, t_stk *b, t_stat *stats)
 {
 	t_mrg	mrg;
 
 	mrg.sublist_size = 1;
-	mrg.sublist_count = stk_1->len;
+	mrg.sublist_count = a->len;
 	mrg.full_size = mrg.sublist_count;
 	while (mrg.sublist_size != mrg.full_size)
 	{
-		if (stk_1->len)
-			merge_from_a(stk_1, stk_2, &mrg);
+		if (a->len)
+			merge_from_a(a, b, &mrg);
 		else
-			merge_from_b(stk_1, stk_2, &mrg);
+			merge_from_b(a, b, &mrg);
 	}
-	if (stk_2->len)
-		empty_b(stk_1, stk_2);
+	if (a->len)
+		empty_b(a, b);
 }
