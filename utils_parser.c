@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   utils_parser.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abalcu <abalcu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/10 01:59:26 by abalcu            #+#    #+#             */
-/*   Updated: 2025/11/10 04:18:29 by abalcu           ###   ########.fr       */
+/*   Created: 2025/11/08 16:39:52 by mawelsch          #+#    #+#             */
+/*   Updated: 2025/11/12 09:37:07 by abalcu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int	parse_strat(t_flag *flags, char const *arg)
 
 int	parse_flag(t_flag *flags, int *pos, int argc, char const *argv[])
 {
-	while (*pos < argc && !is_num(argv[*pos]) && *argv[*pos])
+	while (*pos < argc && !is_num(argv[*pos]) && !ft_strchr(argv[*pos], ' '))
 	{
 		flags->valid_flag += parse_strat(flags, argv[*pos]);
 		flags->valid_flag += parse_bench(flags, argv[*pos]);
@@ -53,51 +53,29 @@ int	parse_flag(t_flag *flags, int *pos, int argc, char const *argv[])
 	return (1);
 }
 
+int	contains(int *arr, int nbr, size_t len)
+{
+	if (!len || !arr)
+		return (0);
+	while (len--)
+	{
+		if (*arr == nbr)
+			return (1);
+		arr++;
+	}
+	return (0);
+}
+
 int	parse_numargs(t_stk *stk, int *pos, int argc, char const *argv[])
 {
-	int	index;
-
-	index = 0;
-	stk->val = (int *)ft_calloc(argc - *pos, sizeof(int));
-	if (!stk->val)
-		return (0);
+	stk->sts->strategy = stk->flgs->strategy;
 	while (*pos < argc)
 	{
-		if (is_num(argv[*pos]))
-		{
-			stk->val[index] = ft_atoi(argv[*pos]);
-			stk->len++;
-			index++;
-		}
-		else
-			return (free(stk->val), perror(), 0);
+		if (!parse_args_str(stk, &stk->len, argv[*pos]))
+			return (free(stk->vals), perror(), 0);
 		(*pos)++;
 	}
 	if (!stk->len)
-		return (free(stk->val), perror(), 0);
+		return (free(stk->vals), perror(), 0);
 	return (1);
-}
-
-int	main(int argc, char const *argv[])
-{
-	int		pos;
-	t_flag	flags;
-	t_stk	a;
-	t_stk	b;
-
-	if (argc < 2)
-		return (perror(), 1);
-	pos = 1;
-	flags = (t_flag){0};
-	a = (t_stk){.name = 'a', .len = 0, .val = NULL};
-	b = (t_stk){.name = 'b', .len = 0, .val = NULL};
-	if (!parse_flag(&flags, &pos, argc, argv))
-		return (1);
-	if (!parse_numargs(&a, &pos, argc, argv))
-		return (1);
-	b.val = (int *)ft_calloc(a.len, sizeof(int));
-	if (!b.val)
-		return (perror(), 1);
-	ft_printf("Pass\n");
-	return (free(a.val), free(b.val), 0);
 }

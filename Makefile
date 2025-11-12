@@ -6,7 +6,7 @@
 #    By: mawelsch <mawelsch@student.42heilbronn.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/11/07 15:12:42 by mawelsch          #+#    #+#              #
-#    Updated: 2025/11/12 01:46:17 by mawelsch         ###   ########.fr        #
+#    Updated: 2025/11/12 16:56:10 by mawelsch         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,8 +16,9 @@ CFLAGS = -Wall -Wextra -Werror
 
 NAME = push_swap
 
-CFILES = push_swap.c parser.c ops.c simple_sort.c single_op_calls.c \
-double_op_calls.c gulag_sort.c
+CFILES = 	push_swap.c sort_adaptive.c sort.c sort_complex.c sort_medium.c \
+			sort_simple.c utils_bench.c utils.c utils_ops1.c utils_ops2.c \
+			utils_ops3.c utils_parser.c
 
 OFILES = $(CFILES:.c=.o)
 
@@ -27,7 +28,7 @@ all: $(NAME) clean
 
 $(NAME): $(OFILES)
 	$(MAKE) -C libft
-	$(CC) $(CFLAGS) $(OFILES) -o $(NAME) -L./libft -l:libft.a
+	$(CC) $(CFLAGS) $(OFILES) -o $(NAME) -L./libft -lft
 
 clean:
 	rm -f $(OFILES) $(LIBFT_OFILES)

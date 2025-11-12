@@ -3,16 +3,16 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mawelsch <mawelsch@student.42heilbronn.    +#+  +:+       +#+         #
+#    By: abalcu <abalcu@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/10/10 13:27:03 by mawelsch          #+#    #+#              #
-#    Updated: 2025/11/08 18:43:07 by mawelsch         ###   ########.fr        #
+#    Updated: 2025/11/12 05:18:24 by abalcu           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC = cc
 
-CFLAGS = -Wall -Werror -Wextra
+CFLAGS = -Wall -Werror -Wextra -fPIE
 
 NAME = libft.a
 

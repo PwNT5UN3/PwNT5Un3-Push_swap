@@ -6,7 +6,7 @@
 /*   By: mawelsch <mawelsch@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/08 16:13:02 by mawelsch          #+#    #+#             */
-/*   Updated: 2025/11/12 01:44:39 by mawelsch         ###   ########.fr       */
+/*   Updated: 2025/11/12 16:56:59 by mawelsch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,71 +20,72 @@ typedef enum e_strat
 	SIMPLE,
 	MEDIUM,
 	COMPLEX,
-}	t_strat;
+}			t_strat;
 
 typedef struct s_flag
 {
 	t_strat	strategy;
 	int		strat_set;
 	int		bench_set;
-	int		invalid_arg;
-}	t_flag;
-
-typedef struct s_stk
-{
-	int		*vals;
-	size_t	len;
-	char	name;
-}	t_stk;
+	int		valid_flag;
+}			t_flag;
 
 typedef struct s_stat
 {
 	size_t	ops;
-	size_t	sa;
-	size_t	sb;
+	size_t	s[2];
+	size_t	p[2];
+	size_t	r[2];
+	size_t	rr[2];
 	size_t	ss;
-	size_t	pa;
-	size_t	pb;
-	size_t	ra;
-	size_t	rb;
-	size_t	rr;
-	size_t	rra;
-	size_t	rrb;
+	size_t	rr_;
 	size_t	rrr;
 	double	disorder;
 	t_strat	strategy;
 	int		size_a;
 	int		size_b;
-	int		bench_set;
-}	t_stat;
+}			t_stat;
 
-int		get_modes(char **argv, t_flag *mode);
-int		parse_selector(int selector, t_flag *mode);
-void	invalid_arg(t_flag *mode);
-int		check_option(char *value);
-int		fill_stack_a(char **argv, int argc, t_stk *stack_a, t_flag *mode);
-int		check_for_duplicates(t_stk *stack_a, int index_2);
-double	ft_get_disorder(int *stack, int size);
+typedef struct s_stk
+{
+	t_stat	*sts;
+	t_flag	*flgs;
+	int		*vals;
+	size_t	len;
+	size_t	cap;
+	char	name;
+}			t_stk;
 
-//The methods
-void	s(t_stk *stk, t_stat *stats);
-void	p(t_stk *to, t_stk *from, t_stat *stats);
-void	r(t_stk *stk, t_stat *stats);
-void	rr(t_stk *stk, t_stat *stats);
-void	ss(t_stk *stk_1, t_stk *stk_2, t_stat *stats);
-void	ra(t_stk *stk_1, t_stk *stk_2, t_stat *stats);
-void	rrr(t_stk *stk_1, t_stk *stk_2, t_stat *stats);
+int			parse_bench(t_flag *flags, char const *arg);
+int			parse_strat(t_flag *flags, char const *arg);
+int			parse_flag(t_flag *flags, int *pos, int argc, char const *argv[]);
+int			parse_numargs(t_stk *stk, int *pos, int argc, char const *argv[]);
+int			parse_args_str(t_stk *stk, size_t *len, const char *argv);
+float		get_disorder(int *stack, int size);
+int			contains(int *arr, int nbr, size_t len);
+int			is_num(char const *arg);
+void		pbench(t_stat *sts);
+void		perror(void);
 
-//The actual operations
-void	swap(t_stk *stk);
-void	push(t_stk *to, t_stk *from);
-void	rotate(t_stk *stk);
-void	rev_rotate(t_stk *stk);
+void		s(t_stk *stk);
+void		ss(t_stk *stk_1, t_stk *stk_2);
+void		p(t_stk *to, t_stk *from);
+void		r(t_stk *stk);
+void		rr(t_stk *stk);
+void		rr_(t_stk *stk_1, t_stk *stk_2);
+void		rrr(t_stk *stk_1, t_stk *stk_2);
 
-//The sorting algorithms
-void	bubblesort(t_stk *stk_1, t_stk *stk_2, t_stat *stats);
+void		swap(int *arr);
+void		rotate(int *arr, size_t len);
+void		rrotate(int *arr, size_t len);
+int			pop(int *arr, size_t *len);
+void		push(int val, int *arr, size_t *len);
 
-//testing it out
-void	gulag_sort(t_stk *stk_1, t_stk *stk_2, t_stat *stats);
+void		ps_sort(t_stk *a, t_stk *b);
 
-#endif //PUSH_SWAP_H
+void		simple_sort(t_stk *a, t_stk *b);
+void		medium_sort(t_stk *a, t_stk *b);
+void		complex_sort(t_stk *a, t_stk *b);
+void		adaptive_sort(t_stk *a, t_stk *b);
+
+#endif // PUSH_SWAP_H
