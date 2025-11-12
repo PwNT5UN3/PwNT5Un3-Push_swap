@@ -6,7 +6,7 @@
 /*   By: mawelsch <mawelsch@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/08 17:55:24 by mawelsch          #+#    #+#             */
-/*   Updated: 2025/11/12 17:58:40 by mawelsch         ###   ########.fr       */
+/*   Updated: 2025/11/12 18:15:44 by mawelsch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ void	simple_sort(t_stk *a, t_stk *b)
 	while (a->len - 2 && get_disorder(a->vals, a->len))
 	{
 		index = 0;
-		//rr(a);
 		while (index < a->len - 1)
 		{
 			rr(a);
