@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ops_utils.c                                        :+:      :+:    :+:   */
+/*   utils_ops1.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abalcu <abalcu@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mawelsch <mawelsch@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/11 07:24:31 by abalcu            #+#    #+#             */
-/*   Updated: 2025/11/12 05:11:31 by abalcu           ###   ########.fr       */
+/*   Updated: 2025/11/13 18:24:17 by mawelsch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ int	pop(int *arr, size_t *len)
 void	push(int val, int *arr, size_t *len)
 {
 	if (*len)
-		ft_memmove(&arr[1], arr, (*len - 1) * sizeof(int));
+		ft_memmove(&arr[1], arr, (*len) * sizeof(int));
 	arr[0] = val;
 	(*len)++;
 }
