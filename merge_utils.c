@@ -6,7 +6,7 @@
 /*   By: mawelsch <mawelsch@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/12 18:23:06 by mawelsch          #+#    #+#             */
-/*   Updated: 2025/11/12 20:20:47 by mawelsch         ###   ########.fr       */
+/*   Updated: 2025/11/12 23:38:36 by mawelsch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,9 @@ void	small_merger(t_stk *a, t_stk *b, size_t *lst_1_len, size_t *lst_2_len)
 		else
 		{
 			rotator = 0;
-			while (rotator++ < *lst_1_len)
+			while (rotator++ < *lst_1_len - 1)
 				r(a);
+			s(a);
 			p(b, a);
 			while (--rotator > 0)
 				rr(a);
@@ -50,8 +51,9 @@ void	big_merger(t_stk *a, t_stk *b, size_t *lst_1_len, size_t *lst_2_len)
 		else
 		{
 			rotator = 0;
-			while (rotator++ < *lst_1_len)
+			while (rotator++ < *lst_1_len - 1)
 				r(b);
+			s(b);
 			p(a, b);
 			while (--rotator > 0)
 				rr(b);
