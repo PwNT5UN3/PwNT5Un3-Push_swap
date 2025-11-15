@@ -2,18 +2,16 @@
     "tasks": [
         {
             "type": "cppbuild",
-            "label": "build",
+            "label": "C/C++: gcc build active file",
             "command": "/usr/bin/gcc",
             "args": [
                 "-fdiagnostics-color=always",
                 "-g",
                 "-Llibft",
-                "./sort*.c",
-                "./utils*.c",
                 "${file}",
                 "-o",
                 "${fileDirname}/${fileBasenameNoExtension}",
-                "-lft",
+                "-lft"
             ],
             "options": {
                 "cwd": "${fileDirname}"
