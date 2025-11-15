@@ -6,7 +6,7 @@
 /*   By: mawelsch <mawelsch@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/12 04:15:33 by abalcu            #+#    #+#             */
-/*   Updated: 2025/11/13 17:54:49 by mawelsch         ###   ########.fr       */
+/*   Updated: 2025/11/15 00:50:27 by mawelsch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,14 @@ typedef struct s_mrg
 	size_t	sublist_count;
 	size_t	sublist_size;
 }	t_mrg;
+
+typedef struct s_lists
+{
+	size_t	sublists;
+	size_t	l1l;
+	size_t	l2l;
+	int		must_rotate;
+}	t_lists;
 
 void	append_leftover_chunk(t_stk *to, t_stk *from)
 {
@@ -38,25 +46,29 @@ void	empty_b(t_stk *stk_1, t_stk *stk_2)
 
 void	merge_from_a(t_stk *stk_1, t_stk *stk_2, t_mrg *mrg)
 {
-	size_t	sublists;
-	size_t	lst_1_len;
-	size_t	lst_2_len;
+	t_lists	lsts;
 
-	sublists = mrg->sublist_count;
-	while (sublists > 1)
+	lsts.must_rotate = 0;
+	lsts.sublists = mrg->sublist_count;
+	while (lsts.sublists > 1)
 	{
-		lst_1_len = mrg->sublist_size;
-		lst_2_len = mrg->sublist_size;
-		if (stk_1->len - lst_1_len < lst_2_len)
-			lst_2_len = stk_1->len - lst_1_len;
-		while (lst_1_len && lst_2_len)
-			small_merger(stk_1, stk_2, &lst_1_len, &lst_2_len);
-		while (lst_1_len--)
+		lsts.l1l = mrg->sublist_size;
+		lsts.l2l = mrg->sublist_size;
+		if (stk_1->len < lsts.l1l * 2 && stk_1->len > lsts.l1l)
+		{
+			lsts.l2l = stk_1->len - lsts.l1l;
+			lsts.must_rotate = smol_mrg_end(stk_1, stk_2, &lsts.l1l, &lsts.l2l);
+		}
+		else
+			small_merger(stk_1, stk_2, &lsts.l1l, &lsts.l2l);
+		while (lsts.l1l--)
 			p(stk_2, stk_1);
-		while (lst_2_len--)
+		while (lsts.l2l--)
 			p(stk_2, stk_1);
-		sublists -= 2;
+		lsts.sublists -= 2;
 	}
+	while (lsts.must_rotate-- > 0)
+		r(stk_2);
 	append_leftover_chunk(stk_2, stk_1);
 	mrg->sublist_count = ((mrg->sublist_count / 2) + mrg->sublist_count % 2);
 	mrg->sublist_size *= 2;
@@ -64,25 +76,29 @@ void	merge_from_a(t_stk *stk_1, t_stk *stk_2, t_mrg *mrg)
 
 void	merge_from_b(t_stk *stk_1, t_stk *stk_2, t_mrg *mrg)
 {
-	size_t	sublists;
-	size_t	lst_1_len;
-	size_t	lst_2_len;
+	t_lists	lsts;
 
-	sublists = mrg->sublist_count;
-	while (sublists > 1)
+	lsts.must_rotate = 0;
+	lsts.sublists = mrg->sublist_count;
+	while (lsts.sublists > 1)
 	{
-		lst_1_len = mrg->sublist_size;
-		lst_2_len = mrg->sublist_size;
-		if (stk_2->len - lst_1_len < lst_2_len)
-			lst_2_len = stk_2->len - lst_1_len;
-		while (lst_1_len && lst_2_len)
-			big_merger(stk_1, stk_2, &lst_1_len, &lst_2_len);
-		while (lst_1_len--)
+		lsts.l1l = mrg->sublist_size;
+		lsts.l2l = mrg->sublist_size;
+		if (stk_2->len < lsts.l1l * 2 && stk_2->len > lsts.l1l)
+		{
+			lsts.l2l = stk_1->len - lsts.l1l;
+			lsts.must_rotate = big_mrg_end(stk_1, stk_2, &lsts.l1l, &lsts.l2l);
+		}
+		else
+			big_merger(stk_1, stk_2, &lsts.l1l, &lsts.l2l);
+		while (lsts.l1l--)
 			p(stk_1, stk_2);
-		while (lst_2_len--)
+		while (lsts.l2l--)
 			p(stk_1, stk_2);
-		sublists -= 2;
+		lsts.sublists -= 2;
 	}
+	while (lsts.must_rotate-- > 0)
+		r(stk_1);
 	append_leftover_chunk(stk_1, stk_2);
 	mrg->sublist_count = ((mrg->sublist_count / 2) + mrg->sublist_count % 2);
 	mrg->sublist_size *= 2;
@@ -95,7 +111,7 @@ void	complex_sort(t_stk *a, t_stk *b)
 	mrg.sublist_size = 1;
 	mrg.sublist_count = a->len;
 	mrg.full_size = mrg.sublist_count;
-	while (mrg.sublist_size < mrg.full_size)
+	while (mrg.sublist_count > 1)
 	{
 		if (a->len)
 			merge_from_a(a, b, &mrg);
