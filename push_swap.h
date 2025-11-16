@@ -6,7 +6,7 @@
 /*   By: mawelsch <mawelsch@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/08 16:13:02 by mawelsch          #+#    #+#             */
-/*   Updated: 2025/11/14 21:55:06 by mawelsch         ###   ########.fr       */
+/*   Updated: 2025/11/16 01:25:08 by mawelsch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,5 +95,10 @@ int		smol_mrg_end(t_stk *a, t_stk *b, size_t *lst_1_len, size_t *lst_2_len);
 int		big_mrg_end(t_stk *a, t_stk *b, size_t *lst_1_len, size_t *lst_2_len);
 
 void	chapter_seven_lists(t_stk *to, t_stk *from, size_t *l1l, size_t *l2l);
+
+size_t	get_first_list_size_a(t_stk *stk, size_t max_len);
+size_t	get_first_list_size_b(t_stk *stk, size_t max_len);
+size_t	get_last_list_size_a(t_stk *stk, size_t max_len);
+size_t	get_last_list_size_b(t_stk *stk, size_t max_len);
 
 #endif // PUSH_SWAP_H

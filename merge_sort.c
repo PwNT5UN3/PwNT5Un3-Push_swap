@@ -6,7 +6,7 @@
 /*   By: mawelsch <mawelsch@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/11 02:09:42 by mawelsch          #+#    #+#             */
-/*   Updated: 2025/11/14 22:49:36 by mawelsch         ###   ########.fr       */
+/*   Updated: 2025/11/15 02:37:35 by mawelsch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,7 +111,7 @@ void	complex_sort(t_stk *a, t_stk *b)
 	mrg.sublist_size = 1;
 	mrg.sublist_count = a->len;
 	mrg.full_size = mrg.sublist_count;
-	while (mrg.sublist_size < mrg.full_size)
+	while (mrg.sublist_count > 1)
 	{
 		if (a->len)
 			merge_from_a(a, b, &mrg);
