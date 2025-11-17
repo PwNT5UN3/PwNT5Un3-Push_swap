@@ -6,61 +6,61 @@
 /*   By: mawelsch <mawelsch@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/16 03:36:24 by mawelsch          #+#    #+#             */
-/*   Updated: 2025/11/16 03:42:03 by mawelsch         ###   ########.fr       */
+/*   Updated: 2025/11/17 01:06:27 by mawelsch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-size_t	get_first_list_size_b(t_stk *stk, size_t max_len)
+void	slide_to_top_bottom_b(t_stk *a, t_stk *b, t_lists *lsts)
 {
-	size_t	size;
-
-	size = 0;
-	while (size < max_len - 1)
+	while (lsts->l1l)
 	{
-		if (stk->vals[size] < stk->vals[size + 1])
-			break ;
-		size++;
+		if (b->vals[0] < a->vals[0] && a->len > 0)
+		{
+			p(a, b);
+			lsts->l1l -= 1;
+			continue ;
+		}
+		if (b->vals[0] > a->vals[a->len - 1] && a->len > 0)
+		{
+			p(a, b);
+			r(a);
+			lsts->l1l -= 1;
+			continue ;
+		}
+		break ;
 	}
-	return (size + 1);
 }
 
-size_t	get_last_list_size_b(t_stk *stk, size_t max_len)
-{
-	size_t	size;
-
-	size = 0;
-	while (size < max_len - 1)
-	{
-		if (stk->vals[stk->len - 1 - size] > stk->vals[stk->len - 2 - size])
-			break ;
-		size++;
-	}
-	return (size + 1);
-}
-
-void	big_merger(t_stk *a, t_stk *b, size_t *lst_1_len, size_t *lst_2_len)
+void	big_merger(t_stk *a, t_stk *b, t_lists *lsts)
 {
 	int	rotator;
 
-	while (*lst_1_len && *lst_2_len)
+	slide_to_top_bottom_b(a, b, lsts);
+	while (lsts->l1l && lsts->l2l)
 	{
-		if (b->vals[0] > b->vals[*lst_1_len])
+		if (b->vals[0] > a->vals[a->len - 1] && a->len > 0)
 		{
 			p(a, b);
-			*lst_1_len -= 1;
+			r(a);
+			lsts->l1l -= 1;
+		}
+		if (b->vals[0] > b->vals[lsts->l1l])
+		{
+			p(a, b);
+			lsts->l1l -= 1;
 		}
 		else
 		{
 			rotator = 0;
-			while (rotator++ < *lst_1_len - 1)
+			while (rotator++ < lsts->l1l - 1)
 				r(b);
 			s(b);
 			p(a, b);
 			while (--rotator > 0)
 				rr(b);
-			*lst_2_len -= 1;
+			lsts->l2l -= 1;
 		}
 	}
 }

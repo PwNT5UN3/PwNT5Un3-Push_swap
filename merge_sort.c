@@ -6,36 +6,19 @@
 /*   By: mawelsch <mawelsch@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/11 02:09:42 by mawelsch          #+#    #+#             */
-/*   Updated: 2025/11/15 02:37:35 by mawelsch         ###   ########.fr       */
+/*   Updated: 2025/11/16 20:12:26 by mawelsch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-typedef struct s_mrg
-{
-	size_t	full_size;
-	size_t	sublist_count;
-	size_t	sublist_size;
-}	t_mrg;
-
-typedef struct s_lists
-{
-	size_t	sublists;
-	size_t	l1l;
-	size_t	l2l;
-	int		must_rotate;
-}	t_lists;
-
-void	append_leftover_chunk(t_stk *to, t_stk *from)
+void	append_leftover_chunk(t_stk *to, t_stk *from, t_mrg *mrg)
 {
 	int	size;
 
 	size = from->len;
 	while (from->len)
 		p(to, from);
-	while (size--)
-		r(to);
 }
 
 void	empty_b(t_stk *stk_1, t_stk *stk_2)
@@ -54,24 +37,27 @@ void	merge_from_a(t_stk *stk_1, t_stk *stk_2, t_mrg *mrg)
 	{
 		lsts.l1l = mrg->sublist_size;
 		lsts.l2l = mrg->sublist_size;
-		if (stk_1->len < lsts.l1l * 2 && stk_1->len > lsts.l1l)
+		if (lsts.sublists == mrg->sublist_count)
 		{
-			lsts.l2l = stk_1->len - lsts.l1l;
-			lsts.must_rotate = smol_mrg_end(stk_1, stk_2, &lsts.l1l, &lsts.l2l);
+			if (--mrg->appended_last_chunk == 0)
+				lsts.l1l = get_first_list_size_a(stk_1, mrg->sublist_size / 2);
+			else
+				lsts.l1l = get_first_list_size_a(stk_1, mrg->sublist_size);
 		}
-		else
-			small_merger(stk_1, stk_2, &lsts.l1l, &lsts.l2l);
+		if (lsts.sublists == 2)
+			lsts.l2l = get_last_list_size_a(stk_1, mrg->sublist_size);
+		small_merger(stk_1, stk_2, &lsts);
 		while (lsts.l1l--)
 			p(stk_2, stk_1);
 		while (lsts.l2l--)
 			p(stk_2, stk_1);
 		lsts.sublists -= 2;
 	}
-	while (lsts.must_rotate-- > 0)
-		r(stk_2);
-	append_leftover_chunk(stk_2, stk_1);
-	mrg->sublist_count = ((mrg->sublist_count / 2) + mrg->sublist_count % 2);
+	if (lsts.sublists == 1)
+		mrg->appended_last_chunk = 1;
+	append_leftover_chunk(stk_2, stk_1, mrg);
 	mrg->sublist_size *= 2;
+	mrg->sublist_count = ((mrg->sublist_count / 2) + mrg->sublist_count % 2);
 }
 
 void	merge_from_b(t_stk *stk_1, t_stk *stk_2, t_mrg *mrg)
@@ -84,24 +70,27 @@ void	merge_from_b(t_stk *stk_1, t_stk *stk_2, t_mrg *mrg)
 	{
 		lsts.l1l = mrg->sublist_size;
 		lsts.l2l = mrg->sublist_size;
-		if (stk_2->len < lsts.l1l * 2 && stk_2->len > lsts.l1l)
+		if (lsts.sublists == mrg->sublist_count)
 		{
-			lsts.l2l = stk_1->len - lsts.l1l;
-			lsts.must_rotate = big_mrg_end(stk_1, stk_2, &lsts.l1l, &lsts.l2l);
+			if (--mrg->appended_last_chunk == 0)
+				lsts.l1l = get_first_list_size_b(stk_2, mrg->sublist_size / 2);
+			else
+				lsts.l1l = get_first_list_size_b(stk_2, mrg->sublist_size);
 		}
-		else
-			big_merger(stk_1, stk_2, &lsts.l1l, &lsts.l2l);
+		if (lsts.sublists == 2)
+			lsts.l2l = get_last_list_size_b(stk_2, mrg->sublist_size);
+		big_merger(stk_1, stk_2, &lsts);
 		while (lsts.l1l--)
 			p(stk_1, stk_2);
 		while (lsts.l2l--)
 			p(stk_1, stk_2);
 		lsts.sublists -= 2;
 	}
-	while (lsts.must_rotate-- > 0)
-		r(stk_1);
-	append_leftover_chunk(stk_1, stk_2);
-	mrg->sublist_count = ((mrg->sublist_count / 2) + mrg->sublist_count % 2);
+	if (lsts.sublists == 1)
+		mrg->appended_last_chunk = 1;
+	append_leftover_chunk(stk_1, stk_2, mrg);
 	mrg->sublist_size *= 2;
+	mrg->sublist_count = ((mrg->sublist_count / 2) + mrg->sublist_count % 2);
 }
 
 void	complex_sort(t_stk *a, t_stk *b)
@@ -113,6 +102,10 @@ void	complex_sort(t_stk *a, t_stk *b)
 	mrg.full_size = mrg.sublist_count;
 	while (mrg.sublist_count > 1)
 	{
+		if (get_disorder(a->vals, a->len) == 0 && a->len != 0)
+			break ;
+		if (get_disorder(b->vals, b->len) == 1 && b->len != 0)
+			break ;
 		if (a->len)
 			merge_from_a(a, b, &mrg);
 		else

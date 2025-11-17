@@ -6,7 +6,7 @@
 #    By: mawelsch <mawelsch@student.42heilbronn.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/11/07 15:12:42 by mawelsch          #+#    #+#              #
-#    Updated: 2025/11/16 03:36:11 by mawelsch         ###   ########.fr        #
+#    Updated: 2025/11/17 00:32:54 by mawelsch         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,7 @@ NAME = push_swap
 CFILES = 	push_swap.c sort_adaptive.c sort.c sort_complex.c sort_medium.c \
 			sort_simple.c utils_bench.c utils.c utils_ops1.c utils_ops2.c \
 			utils_ops3.c utils_parser.c utils_arg_str.c merge_utils_a.c \
-			merge_utils_b.c
+			merge_utils_b.c list_size_utils.c
 
 OFILES = $(CFILES:.c=.o)
 
