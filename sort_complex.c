@@ -6,7 +6,7 @@
 /*   By: mawelsch <mawelsch@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/12 04:15:33 by abalcu            #+#    #+#             */
-/*   Updated: 2025/11/18 06:01:54 by mawelsch         ###   ########.fr       */
+/*   Updated: 2025/11/18 06:52:52 by mawelsch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,7 @@ void	merge_from_b(t_stk *stk_1, t_stk *stk_2, t_mrg *mrg)
 	active_list = 1;
 	lsts.l1l = get_first_list_size_b(stk_2);
 	lsts.l2l = get_last_list_size_b(stk_2, lsts.l2l);
+	lsts.l3l = get_last_list_size_a(stk_1, get_first_list_size_a(stk_1));
 	while (lsts.l1l && lsts.l2l)
 	{
 		if (active_list == 1)
