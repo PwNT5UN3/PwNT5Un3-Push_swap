@@ -6,7 +6,7 @@
 /*   By: mawelsch <mawelsch@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/12 04:15:33 by abalcu            #+#    #+#             */
-/*   Updated: 2025/11/18 05:30:12 by mawelsch         ###   ########.fr       */
+/*   Updated: 2025/11/18 06:01:54 by mawelsch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,12 +101,13 @@ void	complex_sort(t_stk *a, t_stk *b)
 			break ;
 		if (get_disorder(b->vals, b->len) == 1 && a->len == 0)
 			break ;
-	ft_printf("merging!\n");
 		merge_from_a(a, b, &mrg);
-		merge_from_a(a, b, &mrg);
-		merge_from_b(a, b, &mrg);
+		if (a->len)
+		{
+			merge_from_a(a, b, &mrg);
+			merge_from_b(a, b, &mrg);
+		}
 	}
-	ft_printf("liquidating B\n");
 	while (b->len)
 		p(a, b);
 }
