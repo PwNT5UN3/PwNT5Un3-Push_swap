@@ -6,7 +6,7 @@
 /*   By: abalcu <abalcu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/12 04:15:44 by abalcu            #+#    #+#             */
-/*   Updated: 2025/11/19 01:20:56 by abalcu           ###   ########.fr       */
+/*   Updated: 2025/11/19 05:47:06 by abalcu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,7 +98,3 @@ void	medium_sort(t_stk *a, t_stk *b)
 		move_a(a, b);
 	free(cnks);
 }
-
-// TODO
-// check leaks
-// use diff algo for sort_ to get index, now it uses 0(n2)
