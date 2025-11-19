@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   bench.c                                            :+:      :+:    :+:   */
+/*   utils_bench.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abalcu <abalcu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/11 00:50:38 by abalcu            #+#    #+#             */
-/*   Updated: 2025/11/12 05:11:27 by abalcu           ###   ########.fr       */
+/*   Updated: 2025/11/19 03:19:57 by abalcu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,9 @@ void	pstat_s(char *desc, char *val, int has_nl, int has_bench)
 void	pbench(t_stat *sts)
 {
 	char		*val;
-	char const	*strat[] = {"Adaptive", "Simple", "Medium", "Complex"};
+	char const	*strat[] = {"Adaptive", "Simple / O(n^2)", \
+		"Medium / O(n sqrt(n))", \
+		"Complex"};
 
 	pstat_f("disorder: ", sts->disorder, 1, 1);
 	pstat_s("strategy: ", (char *)strat[sts->strategy], 1, 1);
