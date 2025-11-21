@@ -6,13 +6,13 @@
 #    By: mawelsch <mawelsch@student.42heilbronn.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/11/07 15:12:42 by mawelsch          #+#    #+#              #
-#    Updated: 2025/11/19 02:24:52 by mawelsch         ###   ########.fr        #
+#    Updated: 2025/11/21 05:01:13 by mawelsch         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC = cc
 
-CFLAGS = -g #-Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror
 
 NAME = push_swap
 

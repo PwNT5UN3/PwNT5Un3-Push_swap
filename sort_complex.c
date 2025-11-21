@@ -6,7 +6,7 @@
 /*   By: mawelsch <mawelsch@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/12 04:15:33 by abalcu            #+#    #+#             */
-/*   Updated: 2025/11/21 01:23:13 by mawelsch         ###   ########.fr       */
+/*   Updated: 2025/11/21 05:05:31 by mawelsch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,10 @@ int	get_bytecount(int num)
 
 int	preindex_a(t_stk *a, t_stk *b)
 {
-	int				incrementor_actual;
-	int				incrementor_check;
-	unsigned int	index;
-	unsigned int	highest_index;
-	int				index_bytecount;
+	size_t	incrementor_actual;
+	size_t	incrementor_check;
+	size_t	index;
+	size_t	highest_index;
 
 	incrementor_actual = 0;
 	highest_index = 0;
@@ -54,68 +53,49 @@ int	preindex_a(t_stk *a, t_stk *b)
 	return (get_bytecount(highest_index));
 }
 
-int	need_sort(t_stk *a)
+void	radix_push(t_stk *a, t_stk *b)
 {
-	int	index;
+	size_t	incrementor;
 
-	index = 0;
-	while (index++ < a->len)
-	{
-		if (a->vals[index] % 2 != a->vals[index + 1] % 2)
-			return (1);
+	incrementor = 0;
+	while (incrementor < b->len)
+	{	
+		if (b->vals[0] % 2 == 1)
+			p(a, b);
+		else
+		{
+			r(b);
+			incrementor++;
+		}
 	}
-	return (0);
+	incrementor = 0;
+	while (incrementor < a->len)
+	{
+		if (a->vals[0] % 2 == 0)
+			p(b, a);
+		else
+		{
+			r(a);
+			incrementor++;
+		}
+	}
 }
 
 void	complex_sort(t_stk *a, t_stk *b)
 {
-	int	count;
-	int	incrementor;
-	int	shifter;
-	int	max_runs;
+	size_t	shifter;
+	int		max_runs;
 
 	max_runs = preindex_a(a, b);
-	count = 0;
-	while (count < max_runs)
+	while (max_runs--)
 	{
-		if (get_disorder(a->vals, a->len) == 0 && get_disorder(b->vals, b->len))
-			break ;
-		incrementor = 0;
-		if (need_sort(a))
-		{
-			while (incrementor < a->len)
-			{
-				if (a->vals[0] % 2 == 0)
-				{
-					p(b, a);
-				}
-				else
-				{
-					r(a);
-					incrementor++;
-				}
-			}
-		}
+		radix_push(a, b);
 		shifter = -1;
 		while (++shifter < a->len)
 			a->vals[shifter] = a->vals[shifter] >> 1;
 		shifter = -1;
 		while (++shifter < b->len)
 			b->vals[shifter] = b->vals[shifter] >> 1;
-		incrementor = 0;
-		while (incrementor < b->len)
-		{
-			if (b->vals[0] % 2 == 1)
-			{
-				p(a, b);
-			}
-			else
-			{
-				r(b);
-				incrementor++;
-			}
-		}
-		count++;
 	}
 	while (b->len)
 		p(a, b);
