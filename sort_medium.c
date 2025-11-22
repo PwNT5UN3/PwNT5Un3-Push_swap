@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sort_medium.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abalcu <abalcu@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mawelsch <mawelsch@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/12 04:15:44 by abalcu            #+#    #+#             */
-/*   Updated: 2025/11/19 05:47:06 by abalcu           ###   ########.fr       */
+/*   Updated: 2025/11/21 05:10:40 by mawelsch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,8 @@ static void	index_a(t_stk *a)
 static void	chunk(t_mcounter *counter, t_limit *cnks, t_stk *a, t_stk *b)
 {
 	int	mid;
-	int	tpos;
 
-	if (counter->p < a->len / 2)
+	if (counter->p < (int)a->len / 2)
 		while ((counter->p)--)
 			r(a);
 	else
@@ -47,7 +46,7 @@ static void	chunk(t_mcounter *counter, t_limit *cnks, t_stk *a, t_stk *b)
 
 static void	move_a(t_stk *a, t_stk *b)
 {
-	int	max_i;
+	size_t	max_i;
 
 	max_i = max_index(b->vals, b->len);
 	if (max_i < b->len / 2)

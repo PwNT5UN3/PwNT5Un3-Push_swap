@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils_arg_str.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abalcu <abalcu@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mawelsch <mawelsch@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/12 07:35:03 by abalcu            #+#    #+#             */
-/*   Updated: 2025/11/19 02:11:32 by abalcu           ###   ########.fr       */
+/*   Updated: 2025/11/21 05:12:39 by mawelsch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void	realloc_stk(t_stk *stk, size_t old, size_t new)
 	stk->vals = tmp;
 }
 
-int	parse_args_str(t_stk *stk, size_t *len, const char *argv)
+int	parse_args_str(t_stk *stk, const char *argv)
 {
 	int		i;
 	int		nbr;

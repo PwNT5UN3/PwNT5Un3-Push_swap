@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils_medium_sort.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abalcu <abalcu@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mawelsch <mawelsch@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/18 11:25:49 by abalcu            #+#    #+#             */
-/*   Updated: 2025/11/18 11:30:10 by abalcu           ###   ########.fr       */
+/*   Updated: 2025/11/21 05:13:22 by mawelsch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 int	max_index(int *a, size_t len)
 {
-	int	i;
-	int	max;
-	int	idx;
+	size_t	i;
+	int		max;
+	int		idx;
 
 	i = 1;
 	idx = 0;

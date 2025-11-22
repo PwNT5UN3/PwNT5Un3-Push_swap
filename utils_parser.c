@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils_parser.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abalcu <abalcu@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mawelsch <mawelsch@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/08 16:39:52 by mawelsch          #+#    #+#             */
-/*   Updated: 2025/11/18 09:33:46 by abalcu           ###   ########.fr       */
+/*   Updated: 2025/11/21 05:12:46 by mawelsch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ int	parse_numargs(t_stk *stk, int *pos, int argc, char const *argv[])
 	stk->sts->strategy = stk->flgs->strategy;
 	while (*pos < argc)
 	{
-		if (!parse_args_str(stk, &stk->len, argv[*pos]))
+		if (!parse_args_str(stk, argv[*pos]))
 			return (free(stk->vals), perror(), 0);
 		(*pos)++;
 	}

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils_bench.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abalcu <abalcu@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mawelsch <mawelsch@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/11 00:50:38 by abalcu            #+#    #+#             */
-/*   Updated: 2025/11/19 03:19:57 by abalcu           ###   ########.fr       */
+/*   Updated: 2025/11/21 05:11:08 by mawelsch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,6 @@ void	pstat_s(char *desc, char *val, int has_nl, int has_bench)
 
 void	pbench(t_stat *sts)
 {
-	char		*val;
 	char const	*strat[] = {"Adaptive", "Simple / O(n^2)", \
 		"Medium / O(n sqrt(n))", \
 		"Complex"};
