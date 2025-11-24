@@ -6,7 +6,7 @@
 /*   By: mawelsch <mawelsch@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/12 07:35:03 by abalcu            #+#    #+#             */
-/*   Updated: 2025/11/21 05:12:39 by mawelsch         ###   ########.fr       */
+/*   Updated: 2025/11/24 15:39:29 by mawelsch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ int	parse_args_str(t_stk *stk, const char *argv)
 	{
 		nbr = ft_atoi(arglst[i]);
 		if (!is_num(arglst[i]) || contains(stk->vals, nbr, stk->len))
-			return (free_arglst(arglst), 0);
+			return (free_arglst(arglst), free(arglst), 0);
 		stk->vals[i + old_len] = nbr;
 		i++;
 	}
