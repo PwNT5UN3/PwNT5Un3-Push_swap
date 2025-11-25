@@ -6,7 +6,7 @@
 /*   By: mawelsch <mawelsch@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/08 17:55:24 by mawelsch          #+#    #+#             */
-/*   Updated: 2025/11/20 01:27:00 by mawelsch         ###   ########.fr       */
+/*   Updated: 2025/11/25 22:33:42 by mawelsch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,17 +22,12 @@ void	simple_sort(t_stk *a, t_stk *b)
 		index = 0;
 		while (index < a->len - 1)
 		{
-			rr(a);
 			if (a->vals[0] > a->vals[1])
 				s(a);
 			index++;
+			r(a);
 		}
-		p(b, a);
-	}
-	if (a->vals[0] > a->vals[1])
-		s(a);
-	while (b->len)
-	{
-		p(a, b);
+		r(b);
+		r(a);
 	}
 }
